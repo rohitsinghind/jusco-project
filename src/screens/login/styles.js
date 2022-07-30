@@ -3,7 +3,6 @@ export const styles = {
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
-        background:"#f0f2f7",
         height:"100vh"
     },
     paper:{

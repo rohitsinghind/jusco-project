@@ -13,3 +13,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; 
+   margin: 0;
+}
+
+ /* Firefox */
+ input[type=number] {
+  -moz-appearance: textfield;
+} 
+
+input[type="file"]::-webkit-file-upload-button {
+  background-color: rgb(221, 221, 221);
+  color: rgb(65, 65, 65);
+  width: 100%;
+  padding: 1vmax;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
