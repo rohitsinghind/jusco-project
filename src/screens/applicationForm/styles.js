@@ -65,6 +65,18 @@ export const styles = {
             flexDirection:"column"
           },
     },
+    gstUploadRow:{
+        display:"flex",
+        justifyContent:"start",
+        alignItems:"center",
+    },
+    RadioBtns:{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        gap: "30px"
+        
+    },
     inputBtnText:{
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"18px",

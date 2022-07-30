@@ -166,7 +166,7 @@ export default function ApplicationForm() {
         </FormControl>
            </Box>
        
-           <Box sx={styles.row}>
+           <Box sx={styles.gstUploadRow}>
             <Typography sx={styles.inputBtnText}>
                 Upload your GSTIN Document
             </Typography>
@@ -374,13 +374,13 @@ export default function ApplicationForm() {
             </Typography>
             <FormControl sx={styles.inputField}>
             <RadioGroup
-            sx={styles.row}
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
-            >
+            ><div style={styles.RadioBtns}>
               <FormControlLabel value="Once" control={<Radio />} label="Once" />
               <FormControlLabel value="Twice" control={<Radio />} label="Twice" />
+              </div>
             </RadioGroup>
           </FormControl>
         <Button 
