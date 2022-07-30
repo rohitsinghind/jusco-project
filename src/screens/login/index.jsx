@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { styles } from './styles';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -36,7 +36,7 @@ export default function Login() {
     
   }
 
-  const [respond, setRespond] = useState("")
+  let navigate = useNavigate();
   
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 
@@ -95,75 +95,21 @@ export default function Login() {
                 sx={styles.forgotPwdText} >
                 Forgot your password? 
             </Typography>
+            <Box sx={styles.flex}>
+              <Typography
+                onClick={()=>{navigate("/application")}}
+                  sx={styles.signupText} >
+                  Don't have an account? 
+              </Typography>
+              <Typography
+                onClick={()=>{navigate("/application")}}
+                  sx={styles.signupBtn} >
+                  Signup here 
+              </Typography>
+            </Box>
           </Paper>
         </Container>
 
-     {/* <Container maxWidth="xl" sx={mediaQuery.matches?styles.mobileContainer:""}>
-     <Typography>{respond?respond:""}</Typography>
-        <Box sx={styles.box}>
-            <div>
-            <Paper sx={} variant="outlined" sx={{ p: 4 }}>
-            <img  style={styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
-            <Typography
-                sx={styles.textLogo} >
-                Digital Bill Submission and Tracking System
-            </Typography>
-            <Typography
-                sx={styles.loginText} >
-                Log in to continue.
-            </Typography>
-            <TextField
-          id="email"
-        type="text"
-          label="Enter your Email"
-          placeholder="Email"
-          value={creds.email || ''}
-          onChange={handleChange}
-          sx={styles.center}
-        />
-        <div style={styles.center}>
-        <FormControl variant="outlined" sx={{mt:2, width: '120%'}}>
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="password"
-            placeholder="*****"
-            type={showPassword ? 'text' : 'password'}
-            value={creds.password || ''}
-            onChange={handleChange}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        </div>
-        <div style={styles.center}>
-        <Button 
-        variant="contained" 
-        sx={styles.loginBtn} 
-        onClick={loginHandler}
-        >Log in
-        </Button>
-        </div>
-        <Divider sx={styles.divider}/>
-            <Typography
-                sx={styles.signupText1} >
-                Don't have an account? 
-            </Typography>
-      </Paper>
-            </div>
-            <Box>
-          </Box>
-          </Box>
-      </Container> */}
     </>
   )
 }

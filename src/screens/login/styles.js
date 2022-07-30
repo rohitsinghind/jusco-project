@@ -26,6 +26,9 @@ export const styles = {
         display:"flex",
         justifyContent:"center",
         my:"20px",
+        '@media (max-width: 650px)': {
+            fontSize:"22px",
+          },
     },
     loginText:{
         fontFamily: "'Open Sans', sans-serif",
@@ -33,7 +36,10 @@ export const styles = {
         color:"#5D5D5D",
         display:"flex",
         justifyContent:"center",
-        mb:"10px"
+        mb:"10px",
+        '@media (max-width: 650px)': {
+            fontSize:"20px",
+          },
     },
     inputField:{
         width:"100%",
@@ -50,11 +56,38 @@ export const styles = {
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"20px",
         cursor:"pointer",
+        '@media (max-width: 650px)': {
+            fontSize:"15px",
+          },
     },
     loginBtn:{
         width:"100%",
         background:"#1b84e7",
-        mt:"20px",
+        mt:"10px",
     },
-
+    signupText:{
+        color:"#1D1D1D",
+        fontFamily: "'Open Sans', sans-serif",
+        fontSize:"18px",
+        cursor:"pointer",
+        '@media (max-width: 650px)': {
+            fontSize:"13px",
+          },
+    },
+    signupBtn:{
+        color:"#0044a9",
+        fontFamily: "'Open Sans', sans-serif",
+        fontSize:"18px",
+        cursor:"pointer",
+        mx:"10px",
+        '@media (max-width: 650px)': {
+            fontSize:"16px",
+          },
+    },
+    flex:{
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        mt:"10px"
+    }
   };

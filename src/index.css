@@ -21,7 +21,7 @@ input::-webkit-inner-spin-button {
    margin: 0;
 }
 
- /* Firefox */
+ /* Firefox
  input[type=number] {
   -moz-appearance: textfield;
 } 
@@ -35,5 +35,5 @@ input[type="file"]::-webkit-file-upload-button {
   border: none;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
-}
+} */
 

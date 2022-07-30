@@ -1,10 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useRef} from 'react'
 import { styles } from './styles';
 import { Link } from "react-router-dom";
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
 import Typography from "@mui/material/Typography";
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -15,9 +14,18 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormGroup from '@mui/material/FormGroup';
+import Checkbox from '@mui/material/Checkbox';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 export default function ApplicationForm() {
+
+  const divForScroll = useRef(null)
 
   const [creds, setCreds] = useState({ Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '' });
   const [showPassword, setShowPassword] = useState(false)
@@ -40,6 +48,7 @@ export default function ApplicationForm() {
 
   return (
     <>
+        <div ref={divForScroll}></div>
         <Container maxWidth="xl" sx={styles.container}>
             <img  style={styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
             <Typography
@@ -169,44 +178,25 @@ export default function ApplicationForm() {
                Billing Address
             </Typography>
            <Box sx={styles.row}>
+           <TextField
+                id="nameBa"
+                type="text"
+                label="Name"
+                placeholder="Name"
+                value={creds.nameBa || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            />
                 <TextField
-                id="streetHouseNo"
+                id="streetHouseNoBa"
                 type="text"
                 label="Street/House Number"
                 placeholder="Street/House Number"
-                value={creds.streetHouseNo || ''}
+                value={creds.streetHouseNoBa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
-            <TextField
-                id="postalCode"
-                type="number"
-                label="Postal Code"
-                placeholder="Postal Code"
-                value={creds.postalCode || ''}
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
-           </Box>
-           <Box sx={styles.row}>
-                <TextField
-                id="city"
-                type="text"
-                label="City"
-                placeholder="Jamshedpur"
-                value="Jamshedpur"
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
-            <TextField
-                id="country"
-                type="text"
-                label="Country"
-                placeholder="India"
-                value="India"
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
+            
            </Box>
            <Box sx={styles.row}>
            <TextField
@@ -216,38 +206,98 @@ export default function ApplicationForm() {
                 placeholder="34 Jharkhand"
                 value="34 Jharkhand"
                 onChange={handleChange}
+                sx={styles.inputFieldRO}
+            />
+           <TextField
+                id="postalCodeBa"
+                type="number"
+                label="Postal Code"
+                placeholder="Postal Code"
+                value={creds.postalCodeBa || ''}
+                onChange={handleChange}
                 sx={styles.inputField}
             />
-            <Box sx={styles.inputField}></Box>
            </Box>
-
+           
+           <Box sx={styles.row}>
+                <TextField
+                id="city"
+                type="text"
+                label="City"
+                placeholder="Jamshedpur"
+                value="Jamshedpur"
+                onChange={handleChange}
+                sx={styles.inputFieldRO}
+            />
+            <TextField
+                id="country"
+                type="text"
+                label="Country"
+                placeholder="India"
+                value="India"
+                onChange={handleChange}
+                sx={styles.inputFieldRO}
+            />
+           </Box>
+           
+           <Box sx={styles.row}>
+              <FormControl sx={styles.inputField} fullWidth>
+            <InputLabel id="demo-simple-select-label">area</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={creds.areaBa || ''}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
+              <MenuItem value={"KSD"}>Kashidih</MenuItem>
+              <MenuItem value={"NT"}>Northern Town</MenuItem>
+              <MenuItem value={"BRD"}>Baridih</MenuItem>
+              <MenuItem value={"BRM"}>Burmamines</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={styles.inputField}></Box>
+           </Box>
 
         
            <Typography
                 sx={styles.signupText} >
                Pickup Address
             </Typography>
+            <FormGroup>
+              <FormControlLabel control={<Checkbox defaultChecked />} label="Address same as Billing Address" />
+            </FormGroup>
            <Box sx={styles.row}>
-                <TextField
-                id="streetHouseNo"
+           <TextField
+                id="namePa"
                 type="text"
-                label="Street/House Number"
-                placeholder="Street/House Number"
-                value={creds.streetHouseNo || ''}
+                label="Name"
+                placeholder="Name"
+                value={creds.namePa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
-            <TextField
-                id="postalCode"
-                type="number"
-                label="Postal Code"
-                placeholder="Postal Code"
-                value={creds.postalCode || ''}
+                <TextField
+                id="streetHouseNoPa"
+                type="text"
+                label="Street/House Number"
+                placeholder="Street/House Number"
+                value={creds.streetHouseNoPa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
            </Box>
            <Box sx={styles.row}>
+           <TextField
+                id="postalCodePa"
+                type="number"
+                label="Postal Code"
+                placeholder="Postal Code"
+                value={creds.postalCodePa || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            />
                 <TextField
                 id="city"
                 type="text"
@@ -255,17 +305,9 @@ export default function ApplicationForm() {
                 placeholder="Jamshedpur"
                 value="Jamshedpur"
                 onChange={handleChange}
-                sx={styles.inputField}
+                sx={styles.inputFieldRO}
             />
-            <TextField
-                id="country"
-                type="text"
-                label="Country"
-                placeholder="India"
-                value="India"
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
+           
            </Box>
            <Box sx={styles.row}>
            <TextField
@@ -275,9 +317,36 @@ export default function ApplicationForm() {
                 placeholder="34 Jharkhand"
                 value="34 Jharkhand"
                 onChange={handleChange}
-                sx={styles.inputField}
+                sx={styles.inputFieldRO}
             />
-            <Box sx={styles.inputField}></Box>
+             <TextField
+                id="country"
+                type="text"
+                label="Country"
+                placeholder="India"
+                value="India"
+                onChange={handleChange}
+                sx={styles.inputFieldRO}
+            />
+           </Box>
+           <Box sx={styles.row}>
+           <FormControl sx={styles.inputField} fullWidth>
+        <InputLabel id="demo-simple-select-label">area</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={creds.areaPa || ''}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
+          <MenuItem value={"KSD"}>Kashidih</MenuItem>
+          <MenuItem value={"NT"}>Northern Town</MenuItem>
+          <MenuItem value={"BRD"}>Baridih</MenuItem>
+          <MenuItem value={"BRM"}>Burmamines</MenuItem>
+        </Select>
+      </FormControl>
+      <Box sx={styles.inputField}></Box>
            </Box>
            <Box sx={styles.row}>
                 <TextField
@@ -292,21 +361,39 @@ export default function ApplicationForm() {
            <TextField
                 id="Latitude"
                 type="text"
-                label="Latitide"
+                label="Latitude"
                 placeholder="86.202873"
-                value={creds.Longitude || ''}
+                value={creds.Latitude || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
            </Box>
-
+           <Typography
+                sx={styles.signupText} >
+               Frequency of collection in a day 
+            </Typography>
+            <FormControl sx={styles.inputField}>
+            <RadioGroup
+            sx={styles.row}
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="female"
+              name="radio-buttons-group"
+            >
+              <FormControlLabel value="Once" control={<Radio />} label="Once" />
+              <FormControlLabel value="Twice" control={<Radio />} label="Twice" />
+            </RadioGroup>
+          </FormControl>
         <Button 
         variant="contained" 
         sx={styles.submitBtn} 
         onClick={submitHandler}
-        >Submit
+        >Submit Application
         </Button>
+        <IconButton onClick={()=>{divForScroll.current.scrollIntoView({behavior: "smooth"})}} sx={styles.topScrollBtn} color="primary" aria-label="upload picture" component="label">
+        <KeyboardArrowUpIcon />
+      </IconButton>
         </Container>
+       
     </>
   )
 }

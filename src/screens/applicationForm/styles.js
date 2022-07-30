@@ -5,7 +5,8 @@ export const styles = {
         alignItems:"center",
         justifyContent:"center",
         background:"white",
-        py:"20px"
+        py:"20px",
+        position:"relative"
     },
     imgLogo:{
         width:"50%",
@@ -16,6 +17,9 @@ export const styles = {
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"28px",
         color:"#2D2D2D",
+        '@media (max-width: 650px)': {
+            fontSize:"28px",
+          },
     },
     inputField:{
         width:"500px",
@@ -24,12 +28,23 @@ export const styles = {
         '@media (max-width: 1070px)': {
             width:"300px",
             '@media (max-width: 650px)': {
-                width:"100%",
+                width:"90%",
+              },
+          },
+    },
+    inputFieldRO:{
+        width:"500px",
+        background:"#ebebeb",
+        my:"10px",
+        ml:"1rem",
+        '@media (max-width: 1070px)': {
+            width:"300px",
+            '@media (max-width: 650px)': {
+                width:"90%",
               },
           },
     },
     submitBtn:{
-        width:"150px",
         background:"#1b84e7",
         mt:"20px",
     },
@@ -39,7 +54,7 @@ export const styles = {
         color:"#5D5D5D",
         mb:"10px",
         mt:"35px",
-        alignSelf:"center"
+        alignSelf:"center",
     },
     row:{
         display:"flex",
@@ -47,17 +62,23 @@ export const styles = {
         alignItems:"center",
         '@media (max-width: 650px)': {
             width:"100%",
+            flexDirection:"column"
           },
     },
     inputBtnText:{
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"18px",
         color:"#1D1D1D",
-        mt:"10px"
+        mt:"15px"
     },
     inputBtn:{
        marginLeft:"20px",
-       marginTop:"15px"
+       marginTop:"20px"
     },
-
+    topScrollBtn:{
+        position:"absolute",
+        bottom:"20px",
+        right:"30px",
+        background:"#ebebeb"
+    }
   };
