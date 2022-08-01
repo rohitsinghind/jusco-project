@@ -28,7 +28,7 @@ export default function ApplicationForm() {
 
   const divForScroll = useRef(null)
 
-  const [creds, setCreds] = useState({ Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
+  const [creds, setCreds] = useState({ undefined:"",Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -37,7 +37,7 @@ export default function ApplicationForm() {
   const handleChange = (key) => {
     key.preventDefault();
     setCreds({ ...creds, [key.target.id]: key.target.value });
-    console.log(creds.areaBa);
+    console.log(creds);
     console.log(key.target.id);
   };
 
@@ -264,11 +264,11 @@ export default function ApplicationForm() {
            
            <Box sx={styles.row}>
               <FormControl sx={styles.inputField} fullWidth>
-            <InputLabel id="AREA">{creds.areaBa||"Area"}</InputLabel>
+            <InputLabel id="areaBa">{"Area"}</InputLabel>
             <Select
-              labelId="AREA"
+              labelId="areaBa"
               id="areaBa"
-              value={creds.areaBa}
+              value={creds.undefined || ""}
               label="Area"
               onChange={handleChange}
             >
@@ -376,7 +376,7 @@ export default function ApplicationForm() {
         <Select
           labelId="Area"
           id="areaPa"
-          value={val.areaPa || ''}
+          value={creds.undefined || ""}
           label="Age"
           onChange={handleChange}
         >
