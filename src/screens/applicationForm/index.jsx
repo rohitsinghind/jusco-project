@@ -37,7 +37,8 @@ export default function ApplicationForm() {
   const handleChange = (key) => {
     key.preventDefault();
     setCreds({ ...creds, [key.target.id]: key.target.value });
-    console.log(key);
+    console.log(creds.areaBa);
+    console.log(key.target.id);
   };
 
   const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:""})
@@ -263,11 +264,11 @@ export default function ApplicationForm() {
            
            <Box sx={styles.row}>
               <FormControl sx={styles.inputField} fullWidth>
-            <InputLabel id="AREA">area</InputLabel>
+            <InputLabel id="AREA">{creds.areaBa||"Area"}</InputLabel>
             <Select
               labelId="AREA"
               id="areaBa"
-              value={creds.areaBa || ''}
+              value={creds.areaBa}
               label="Area"
               onChange={handleChange}
             >
@@ -280,35 +281,6 @@ export default function ApplicationForm() {
           </FormControl>
           <Box sx={styles.inputField}></Box>
            </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
