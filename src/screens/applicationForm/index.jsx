@@ -1,6 +1,6 @@
 import React,{useState, useRef} from 'react'
 import { styles } from './styles';
-import { Link } from "react-router-dom";
+import Iframe from 'react-iframe';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -22,18 +22,39 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { FormLabel } from '@mui/material';
 
 export default function ApplicationForm() {
 
   const divForScroll = useRef(null)
 
-  const [creds, setCreds] = useState({ Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '' });
+  const [creds, setCreds] = useState({ Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
+
   const [showPassword, setShowPassword] = useState(false)
+
+  const [check, setCheck] = useState("yes")
 
   const handleChange = (key) => {
     key.preventDefault();
     setCreds({ ...creds, [key.target.id]: key.target.value });
+    console.log(key);
   };
+
+  const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:""})
+
+  const matchValue =(key)=>{
+    key.preventDefault();
+    setVal({
+    namePa:creds.nameBa,
+    streetHouseNoPa:creds.streetHouseNoBa,
+    postalCodePa:creds.postalCodeBa,
+    cityPa:creds.cityBa,
+    regionPa:creds.regionBa,
+    countryPa:creds.countryBa,
+    areaPa:creds.areaBa
+  })
+  }
+
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
@@ -148,7 +169,7 @@ export default function ApplicationForm() {
             id="confirmPassword"
             placeholder="*****"
             type={showPassword ? 'text' : 'password'}
-            value={creds.password || ''}
+            value={creds.confirmPassword || ''}
             onChange={handleChange}
             endAdornment={
               <InputAdornment position="end">
@@ -221,20 +242,20 @@ export default function ApplicationForm() {
            
            <Box sx={styles.row}>
                 <TextField
-                id="city"
+                id="cityBa"
                 type="text"
                 label="City"
                 placeholder="Jamshedpur"
-                value="Jamshedpur"
+                value={creds.cityBa||"Jamshedpur"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
             <TextField
-                id="country"
+                id="countryBa"
                 type="text"
                 label="Country"
                 placeholder="India"
-                value="India"
+                value={creds.countryBa||"India"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
@@ -242,12 +263,12 @@ export default function ApplicationForm() {
            
            <Box sx={styles.row}>
               <FormControl sx={styles.inputField} fullWidth>
-            <InputLabel id="demo-simple-select-label">area</InputLabel>
+            <InputLabel id="AREA">area</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelId="AREA"
+              id="areaBa"
               value={creds.areaBa || ''}
-              label="Age"
+              label="Area"
               onChange={handleChange}
             >
               <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
@@ -260,50 +281,98 @@ export default function ApplicationForm() {
           <Box sx={styles.inputField}></Box>
            </Box>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
            <Typography
                 sx={styles.signupText} >
                Pickup Address
             </Typography>
+
+
             <FormGroup>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Address same as Billing Address" />
+              <FormControlLabel control={<Checkbox onChange={matchValue}/>}  label="Address same as Billing Address" />
+              {console.log()}
             </FormGroup>
+
+
+
            <Box sx={styles.row}>
            <TextField
                 id="namePa"
                 type="text"
                 label="Name"
                 placeholder="Name"
-                value={creds.namePa || ''}
+                value={val.namePa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
+
+
                 <TextField
                 id="streetHouseNoPa"
                 type="text"
                 label="Street/House Number"
                 placeholder="Street/House Number"
-                value={creds.streetHouseNoPa || ''}
+                value={val.streetHouseNoPa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
+
+
            </Box>
+
+
+
+
+
+
            <Box sx={styles.row}>
            <TextField
                 id="postalCodePa"
                 type="number"
                 label="Postal Code"
                 placeholder="Postal Code"
-                value={creds.postalCodePa || ''}
+                value={val.postalCodePa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
                 <TextField
-                id="city"
+                id="cityPa"
                 type="text"
                 label="City"
                 placeholder="Jamshedpur"
-                value="Jamshedpur"
+                value={val.cityPa || 'Jamshedpur'}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
@@ -311,11 +380,11 @@ export default function ApplicationForm() {
            </Box>
            <Box sx={styles.row}>
            <TextField
-                id="Region"
+                id="regionPa"
                 type="text"
                 label="Region"
                 placeholder="34 Jharkhand"
-                value="34 Jharkhand"
+                value={val.regionPa || "34 Jharkhand"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
@@ -324,18 +393,18 @@ export default function ApplicationForm() {
                 type="text"
                 label="Country"
                 placeholder="India"
-                value="India"
+                value={val.countryPa || "India"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
            </Box>
            <Box sx={styles.row}>
            <FormControl sx={styles.inputField} fullWidth>
-        <InputLabel id="demo-simple-select-label">area</InputLabel>
+        <InputLabel id="Area">area</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={creds.areaPa || ''}
+          labelId="Area"
+          id="areaPa"
+          value={val.areaPa || ''}
           label="Age"
           onChange={handleChange}
         >
@@ -354,7 +423,7 @@ export default function ApplicationForm() {
                 type="text"
                 label="Longitude"
                 placeholder="22.804565"
-                value={creds.Longitude || ''}
+                value={val.Longitude || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
@@ -363,26 +432,39 @@ export default function ApplicationForm() {
                 type="text"
                 label="Latitude"
                 placeholder="86.202873"
-                value={creds.Latitude || ''}
+                value={val.Latitude || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
            </Box>
-           <Typography
-                sx={styles.signupText} >
-               Frequency of collection in a day 
-            </Typography>
-            <FormControl sx={styles.inputField}>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-            ><div style={styles.RadioBtns}>
-              <FormControlLabel value="Once" control={<Radio />} label="Once" />
-              <FormControlLabel value="Twice" control={<Radio />} label="Twice" />
-              </div>
-            </RadioGroup>
-          </FormControl>
+            <Typography  sx={styles.signupText}>Select On Map</Typography>
+           <Iframe url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.91484915413!2d86.17577080000002!3d22.7840284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e31989f0e2b5%3A0xeeec8e81ce9b344!2sJamshedpur%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1659242270720!5m2!1sen!2sin"
+            width="100%"
+            height="450px"
+            id="map"
+            className="myClassname"
+            display="initial"
+            position="relative"
+            allow = "fullscreen"
+            />
+
+            
+
+<FormControl>
+  <FormLabel id="Frequency" sx={styles.signupText}>Frequency of Collection per day</FormLabel>
+  <RadioGroup
+    row
+    sx = {styles.radioGroup}
+    aria-labelledby="Frequency of Collection per day"
+    defaultValue="Once"
+    name="frequency"
+  >
+    <FormControlLabel value="Once" control={<Radio />} label="Once" />
+    <FormControlLabel value="Twice" control={<Radio />} label="Twice" />
+  </RadioGroup>
+</FormControl>
+
+
         <Button 
         variant="contained" 
         sx={styles.submitBtn} 

@@ -92,5 +92,8 @@ export const styles = {
         bottom:"20px",
         right:"30px",
         background:"#ebebeb"
+    },
+    radioGroup:{
+        display:"flex"
     }
   };
