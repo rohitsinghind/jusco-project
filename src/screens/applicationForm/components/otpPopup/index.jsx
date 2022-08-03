@@ -1,4 +1,5 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 import { styles } from './styles'
 
 import Button from '@mui/material/Button';
@@ -14,6 +15,8 @@ export default function OtpPopup(props) {
   const handleClose = () => {
     props.setOpen(false);
   };
+
+  let navigate = useNavigate();
 
   return (
     <>
@@ -48,7 +51,7 @@ export default function OtpPopup(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Verify</Button>
+          <Button onClick={()=>{navigate("/customerDashboard")}}>Verify</Button>
         </DialogActions>
       </Dialog>
     </>

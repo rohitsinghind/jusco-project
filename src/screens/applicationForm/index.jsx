@@ -30,7 +30,7 @@ export default function ApplicationForm() {
 
   const divForScroll = useRef(null)
 
-  const [creds, setCreds] = useState({ undefined:"",Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
+  const [creds, setCreds] = useState({salutation:"", undefined:"",Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -86,6 +86,23 @@ export default function ApplicationForm() {
                Personal Info
             </Typography>
            <Box sx={styles.row}>
+            <div style={mediaQuery.matches?styles.flex:styles}>
+                <FormControl sx={styles.inputFieldSm} fullWidth>
+                  <InputLabel id="salutation">{"salutation"}</InputLabel>
+                  <Select
+                    labelId="salutation"
+                    id="salutation"
+                    value={creds.salutation || ""}
+                    label="salutation"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={"Mr"}>Mr.</MenuItem>
+                    <MenuItem value={"Miss"}>Miss.</MenuItem>
+                    <MenuItem value={"Mrs"}>Mrs.</MenuItem>
+                    <MenuItem value={"Dr"}>Dr.</MenuItem>
+                    <MenuItem value={"Er"}>Er.</MenuItem>
+                  </Select>
+                </FormControl>
                 <TextField
                 id="Fname"
                 type="text"
@@ -93,8 +110,9 @@ export default function ApplicationForm() {
                 placeholder="First Name"
                 value={creds.Fname || ''}
                 onChange={handleChange}
-                sx={styles.inputField}
+                sx={styles.inputFieldSm2}
             />
+            </div>
             <TextField
                 id="Lname"
                 type="text"
@@ -102,7 +120,7 @@ export default function ApplicationForm() {
                 placeholder="Last Name"
                 value={creds.Lname || ''}
                 onChange={handleChange}
-                sx={styles.inputField}
+                sx={styles.inputFieldSm2}
             />
            </Box>
            <Box sx={styles.row}>
@@ -135,15 +153,7 @@ export default function ApplicationForm() {
                 onChange={handleChange}
                 sx={styles.inputField}
             />
-                    <TextField
-                    id="gstin"
-                    type="number"
-                    label="GSTIN"
-                    placeholder="GSTIN"
-                    value={creds.gstin || ''}
-                    onChange={handleChange}
-                    sx={styles.inputField}
-                />
+            <Box sx={styles.inputField}></Box>   
            </Box>
            <Box sx = {styles.row}>
            <FormControl variant="outlined" sx={styles.inputField}>
@@ -191,14 +201,28 @@ export default function ApplicationForm() {
           />
         </FormControl>
            </Box>
-       
-           <Box sx={styles.gstUploadRow}>
+           <Typography
+                sx={styles.signupText} >
+               GST Details
+            </Typography>
+            <Box sx={styles.row}>
+           
+           <TextField
+                    id="gstin"
+                    type="number"
+                    label="GSTIN"
+                    placeholder="GSTIN"
+                    value={creds.gstin || ''}
+                    onChange={handleChange}
+                    sx={styles.inputField}
+                />
+                <Box sx={styles.gstUploadRow}>
             <Typography sx={styles.inputBtnText}>
                 Upload your GSTIN Document
             </Typography>
             <input style={styles.inputBtn} type={"file"}></input>
             </Box>
-
+            </Box>
             <Typography
                 sx={styles.signupText} >
                Billing Address
@@ -226,11 +250,11 @@ export default function ApplicationForm() {
            </Box>
            <Box sx={styles.row}>
            <TextField
-                id="Region"
+                id="cityBa"
                 type="text"
-                label="Region"
-                placeholder="34 Jharkhand"
-                value="34 Jharkhand"
+                label="City"
+                placeholder="Jamshedpur"
+                value={creds.cityBa||"Jamshedpur"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
@@ -246,15 +270,16 @@ export default function ApplicationForm() {
            </Box>
            
            <Box sx={styles.row}>
-                <TextField
-                id="cityBa"
-                type="text"
-                label="City"
-                placeholder="Jamshedpur"
-                value={creds.cityBa||"Jamshedpur"}
-                onChange={handleChange}
-                sx={styles.inputFieldRO}
-            />
+              <TextField
+                    id="Region"
+                    type="text"
+                    label="Region"
+                    placeholder="Jharkhand"
+                    value="Jharkhand"
+                    onChange={handleChange}
+                    sx={styles.inputFieldRO}
+                />
+                
             <TextField
                 id="countryBa"
                 type="text"
@@ -359,8 +384,8 @@ export default function ApplicationForm() {
                 id="regionPa"
                 type="text"
                 label="Region"
-                placeholder="34 Jharkhand"
-                value={val.regionPa || "34 Jharkhand"}
+                placeholder="Jharkhand"
+                value={val.regionPa || "Jharkhand"}
                 onChange={handleChange}
                 sx={styles.inputFieldRO}
             />
@@ -393,7 +418,7 @@ export default function ApplicationForm() {
       </FormControl>
       <Box sx={styles.inputField}></Box>
            </Box>
-           <Box sx={styles.row}>
+           {/* <Box sx={styles.row}>
                 <TextField
                 id="Longitude"
                 type="text"
@@ -452,7 +477,7 @@ export default function ApplicationForm() {
     <FormControlLabel value="QR Code Scanning" control={<Radio />} label="QR Code Scanning" />
     <FormControlLabel value="Signature on Mobile" control={<Radio />} label="Signature on Mobile" />
   </RadioGroup>
-</FormControl>
+</FormControl> */}
 
 
         <Button 
@@ -466,7 +491,7 @@ export default function ApplicationForm() {
       </IconButton>
         </Container>
        
-       <OtpPopup open={open} setOpen={setOpen}/> //otp popup dialogbox
+       <OtpPopup open={open} setOpen={setOpen}/> 
     </>
   )
 }

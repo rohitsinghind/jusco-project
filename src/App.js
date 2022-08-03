@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./screens/login";
 import ApplicationForm from "./screens/applicationForm";
+import CustomerDashboard from "./screens/customerDashboard";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route 
           path="/application" 
           element={<ApplicationForm />} 
+        />
+      <Route 
+          path="/customerDashboard" 
+          element={<CustomerDashboard />} 
         />
       </Routes>
     </Router>

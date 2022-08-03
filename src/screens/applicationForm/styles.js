@@ -36,6 +36,33 @@ export const styles = {
               },
           },
     },
+    inputFieldSm:{
+        width:"165px",
+        my:"10px",
+        ml:"1rem",
+        '@media (max-width: 1070px)': {
+            width:"120px",
+            '@media (max-width: 650px)': {
+                width:"30%",
+              },
+          },
+    },
+    inputFieldSm2:{
+        width:"410px",
+        my:"10px",
+        ml:"1rem",
+        '@media (max-width: 1070px)': {
+            width:"230px",
+            '@media (max-width: 650px)': {
+                width:"90%",
+              },
+          },
+    },
+    flex:{
+        display:"flex",
+        justifyContent:"start",
+        width:"93%",
+    },
     inputFieldRO:{
         width:"500px",
         background:"#ebebeb",
@@ -71,8 +98,15 @@ export const styles = {
     },
     gstUploadRow:{
         display:"flex",
-        justifyContent:"start",
+        justifyContent:"center",
         alignItems:"center",
+        width:"500px",
+        '@media (max-width: 1070px)': {
+            width:"300px",
+            '@media (max-width: 650px)': {
+                width:"80%",
+              },
+          },
     },
     RadioBtns:{
         display:"flex",
@@ -85,7 +119,8 @@ export const styles = {
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"18px",
         color:"#1D1D1D",
-        mt:"15px"
+        mt:"15px",
+        pl:"20px"
     },
     inputBtn:{
        marginLeft:"20px",
