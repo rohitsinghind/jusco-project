@@ -18,6 +18,10 @@ export const styles = {
         width:"100%",
         marginBottom:"10px"
     },
+    imgLogoMobile:{
+        width:"90%",
+        marginBottom:"20px",
+    },
    
     textLogo:{
         fontFamily: "'Open Sans', sans-serif",

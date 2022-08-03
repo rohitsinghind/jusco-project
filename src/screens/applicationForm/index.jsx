@@ -2,6 +2,8 @@ import React,{useState, useRef} from 'react'
 import { styles } from './styles';
 import Iframe from 'react-iframe';
 
+import OtpPopup from './components/otpPopup';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from "@mui/material/Typography";
@@ -63,8 +65,10 @@ export default function ApplicationForm() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    
+    setOpen(true)
   }
+
+  const [open, setOpen] = useState(false);  //for otp popup
   
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 
@@ -72,7 +76,7 @@ export default function ApplicationForm() {
     <>
         <div ref={divForScroll}></div>
         <Container maxWidth="xl" sx={styles.container}>
-            <img  style={styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
+            <img  style={mediaQuery.matches?styles.imgLogoMobile:styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
             <Typography
                 sx={styles.head} >
                 Bulk Generation System
@@ -436,6 +440,20 @@ export default function ApplicationForm() {
   </RadioGroup>
 </FormControl>
 
+<FormControl>
+  <FormLabel id="acknowledgement" sx={styles.signupText}>Mode of acknowledgement of pick ups</FormLabel>
+  <RadioGroup
+    row
+    sx = {styles.radioGroup}
+    aria-labelledby="Mode of acknowledgement of pick ups"
+    defaultValue="QR Code Scanning"
+    name="mode"
+  >
+    <FormControlLabel value="QR Code Scanning" control={<Radio />} label="QR Code Scanning" />
+    <FormControlLabel value="Signature on Mobile" control={<Radio />} label="Signature on Mobile" />
+  </RadioGroup>
+</FormControl>
+
 
         <Button 
         variant="contained" 
@@ -448,6 +466,7 @@ export default function ApplicationForm() {
       </IconButton>
         </Container>
        
+       <OtpPopup open={open} setOpen={setOpen}/> //otp popup dialogbox
     </>
   )
 }

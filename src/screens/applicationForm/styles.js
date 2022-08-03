@@ -12,6 +12,10 @@ export const styles = {
         width:"50%",
         marginBottom:"20px",
     },
+    imgLogoMobile:{
+        width:"90%",
+        marginBottom:"20px",
+    },
    
     head:{
         fontFamily: "'Open Sans', sans-serif",
@@ -46,7 +50,7 @@ export const styles = {
     },
     submitBtn:{
         background:"#1b84e7",
-        mt:"20px",
+        mt:"40px",
     },
     signupText:{
         fontFamily: "'Open Sans', sans-serif",

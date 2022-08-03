@@ -44,7 +44,7 @@ export default function Login() {
     <>
         <Container maxWidth="xl" sx={styles.container}>
           <Paper sx={styles.paper} variant="outlined" >
-            <img  style={styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
+            <img  style={mediaQuery.matches?styles.imgLogoMobile:styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
             <Typography
                 sx={styles.textLogo} >
                 Bulk Generation System
