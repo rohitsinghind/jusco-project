@@ -29,7 +29,7 @@ export const styles = {
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"25px",
         color:"#5D5D5D",
-        mb:"10px",
+        mb:"20px",
         mt:"35px",
         alignSelf:"center",
     },
@@ -42,4 +42,47 @@ export const styles = {
             justifyContent:"center"
           },
     },
+    row:{
+        display:"flex",
+        justifyContent:"start",
+        alignItems:"start",
+        gap:"40px",
+        '@media (max-width: 650px)': {
+            display:"flex",
+            flexDirection:"column",
+            justifyContent:"center"
+          },
+    },
+    detailsRow:{
+        display:"flex",
+        justifyContent:"start",
+        alignItems:"center",
+        my:"6px",
+        '@media (max-width: 650px)': {
+            gap:"20px"
+          },
+    },
+    field:{
+        fontFamily: "'Open Sans', sans-serif",
+        fontSize:"20px",
+        color:"#1D1D1D",
+        fontWeight: 600,
+        width:"200px",
+        display:"flex",
+        justifyContent:"start",
+        '@media (max-width: 650px)': {
+            width:"auto",
+          },
+    },
+    fieldData:{
+        fontFamily: "'Open Sans', sans-serif",
+        fontSize:"20px",
+        color:"#2D2D2D",
+        width:"200px",
+        display:"flex",
+        justifyContent:"start",
+        '@media (max-width: 650px)': {
+            width:"auto",
+          },
+    }
 }
