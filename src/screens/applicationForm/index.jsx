@@ -250,15 +250,6 @@ export default function ApplicationForm() {
            </Box>
            <Box sx={styles.row}>
            <TextField
-                id="cityBa"
-                type="text"
-                label="City"
-                placeholder="Jamshedpur"
-                value={creds.cityBa||"Jamshedpur"}
-                onChange={handleChange}
-                sx={styles.inputFieldRO}
-            />
-           <TextField
                 id="postalCodeBa"
                 type="number"
                 label="Postal Code"
@@ -266,6 +257,15 @@ export default function ApplicationForm() {
                 value={creds.postalCodeBa || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
+            />
+           <TextField
+                id="cityBa"
+                type="text"
+                label="City"
+                placeholder="Jamshedpur"
+                value={creds.cityBa||"Jamshedpur"}
+                onChange={handleChange}
+                sx={styles.inputFieldRO}
             />
            </Box>
            
