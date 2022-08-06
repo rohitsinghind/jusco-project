@@ -74,6 +74,14 @@ export const styles = {
             width:"auto",
           },
     },
+    inputField:{
+        width:"200px",
+        my:"10px",
+        ml:"1rem",
+        '@media (max-width: 650px)': {
+            width:"150px",
+          },
+    },
     fieldData:{
         fontFamily: "'Open Sans', sans-serif",
         fontSize:"20px",
@@ -84,5 +92,28 @@ export const styles = {
         '@media (max-width: 650px)': {
             width:"auto",
           },
-    }
+    },
+    head2:{
+        fontFamily: "'Open Sans', sans-serif",
+        fontSize:"24px",
+        color:"#2D2D2D",
+        mt:"20px",
+        mb:"10px"
+    },
+    inputrow:{
+        display:"flex",
+        justifyContent:"start",
+        alignItems:"center",
+        my:"20px",
+        gap:"30px",
+        '@media (max-width: 650px)': {
+            gap:"10px",
+          },
+    },
+    topScrollBtn:{
+        position:"absolute",
+        bottom:"20px",
+        right:"30px",
+        background:"#ebebeb"
+    },
 }

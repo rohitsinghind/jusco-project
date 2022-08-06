@@ -130,6 +130,7 @@ export default function CustomerDashboard() {
           <Typography sx={styles.field}>GSTIN</Typography>
           <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
         </Box>
+        <Button variant="text">view uploaded GSTIN document</Button>
         </div>
 
         </Box>

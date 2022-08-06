@@ -93,11 +93,11 @@ export default function ApplicationForm() {
                     labelId="salutation"
                     id="salutation"
                     value={creds.salutation || ""}
-                    label="salutation"
+                    label="Salutation"
                     onChange={handleChange}
                   >
                     <MenuItem value={"Mr"}>Mr.</MenuItem>
-                    <MenuItem value={"Miss"}>Miss.</MenuItem>
+                    <MenuItem value={"Miss"}>Miss</MenuItem>
                     <MenuItem value={"Mrs"}>Mrs.</MenuItem>
                     <MenuItem value={"Dr"}>Dr.</MenuItem>
                     <MenuItem value={"Er"}>Er.</MenuItem>
