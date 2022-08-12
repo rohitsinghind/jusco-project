@@ -80,7 +80,7 @@ export default function CustomerDashboard() {
         <Typography sx={styles.head}>Bulk Generation System</Typography>
         <Typography sx={styles.dashboardText}>Dashboard</Typography>
 
-        <Box sx={styles.stepper}>
+        {/* <Box sx={styles.stepper}>
           <Stepper
             activeStep={activeStep}
             orientation={mediaQuery.matches ? "vertical" : "horizontal"}
@@ -100,8 +100,30 @@ export default function CustomerDashboard() {
             })}
           </Stepper>
         </Box>
+         */}
+<Box sx={styles.row}>
+          <div>
+          <Typography sx={styles.dashboardText}></Typography>
+        <Box sx={styles.detailsRow}>
+          <Typography sx={styles.field}>Application Status</Typography>
+          <Typography sx={styles.fieldData}>Pending</Typography>
+        </Box>
+
+       
+
         
+        </div>
+        <div>
+          <Typography sx={styles.dashboardText}></Typography>
+        <Box sx={styles.detailsRow}>
+          <Typography sx={styles.field}></Typography>
+          <Typography sx={styles.fieldData}></Typography>
+        </Box>
+        </div>
+        </Box>
+
         <Box sx={styles.row}>
+          
         <div>
         <Typography sx={styles.dashboardText}>Personal Info</Typography>
         <Box sx={styles.detailsRow}>
@@ -125,12 +147,12 @@ export default function CustomerDashboard() {
         </Box>
         </div>
         <div>
-        <Typography sx={styles.dashboardText}>GSTIN Details</Typography>
+        <Typography sx={styles.dashboardText}>Document Details</Typography>
         <Box sx={styles.detailsRow}>
           <Typography sx={styles.field}>GSTIN</Typography>
           <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
         </Box>
-        <Button variant="text">view uploaded GSTIN document</Button>
+        <Button variant="text">view uploaded document</Button>
         </div>
 
         </Box>
@@ -200,37 +222,7 @@ export default function CustomerDashboard() {
         </div>
         </Box>
 
-        <Box sx={styles.row}>
-          <div>
-          <Typography sx={styles.dashboardText}></Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Depot Area</Typography>
-          <Typography sx={styles.fieldData}>Kashidih</Typography>
-        </Box>
-
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Frequency</Typography>
-          <Typography sx={styles.fieldData}>Once</Typography>
-        </Box>
-
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Acknowledgement</Typography>
-          <Typography sx={styles.fieldData}>Signature on Mobile Device</Typography>
-        </Box>
-
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Rate/ Pickup</Typography>
-          <Typography sx={styles.fieldData}>₹15.00</Typography>
-        </Box>
-        </div>
-        <div>
-          <Typography sx={styles.dashboardText}></Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}></Typography>
-          <Typography sx={styles.fieldData}></Typography>
-        </Box>
-        </div>
-        </Box>
+        
 
       </Container>
     </>

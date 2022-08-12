@@ -6,7 +6,8 @@ export const styles = {
         justifyContent:"center",
         background:"white",
         py:"20px",
-        position:"relative"
+        position:"relative",
+        background:"#F0F2F7"
     },
     imgLogo:{
         width:"50%",
@@ -85,7 +86,7 @@ export const styles = {
         color:"#5D5D5D",
         mb:"10px",
         mt:"35px",
-        alignSelf:"center",
+        width:"100%"
     },
     row:{
         display:"flex",
@@ -134,5 +135,14 @@ export const styles = {
     },
     radioGroup:{
         display:"flex"
+    },
+    fieldContainer:{
+        margin:"10px",
+        padding:"10px"
+    },
+    info:{
+        color:"#7B1FA2",
+        margin:"20px",
+        fontSize:"15px"
     }
   };

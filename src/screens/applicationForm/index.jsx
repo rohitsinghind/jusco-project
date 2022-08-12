@@ -3,7 +3,7 @@ import { styles } from './styles';
 import Iframe from 'react-iframe';
 
 import OtpPopup from './components/otpPopup';
-
+import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from "@mui/material/Typography";
@@ -44,7 +44,7 @@ export default function ApplicationForm() {
   };
 
   const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:""})
-
+  const [btn,setBtn] = useState(true)
   const matchValue =(key)=>{
     key.preventDefault();
     setVal({
@@ -81,6 +81,7 @@ export default function ApplicationForm() {
                 sx={styles.head} >
                 Bulk Generation System
             </Typography>
+            <Paper variant="outlined" sx = {styles.fieldContainer}>
             <Typography
                 sx={styles.signupText} >
                Personal Info
@@ -155,74 +156,69 @@ export default function ApplicationForm() {
             />
             <Box sx={styles.inputField}></Box>   
            </Box>
-           <Box sx = {styles.row}>
-           <FormControl variant="outlined" sx={styles.inputField}>
-          <InputLabel htmlFor="outlined-adornment-password">Create Passsword</InputLabel>
-          <OutlinedInput
-            id="password"
-            placeholder="*****"
-            type={showPassword ? 'text' : 'password'}
-            value={creds.password || ''}
-            onChange={handleChange}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Create Password"
-          />
-        </FormControl>
-        <FormControl variant="outlined" sx={styles.inputField}>
-          <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
-          <OutlinedInput
-            id="confirmPassword"
-            placeholder="*****"
-            type={showPassword ? 'text' : 'password'}
-            value={creds.confirmPassword || ''}
-            onChange={handleChange}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Confirm Password"
-          />
-        </FormControl>
+           <Box sx={styles.row}>
+           <Typography sx={styles.info}>Privacy Policy goes here</Typography>
            </Box>
+           </Paper>
+
+
+
+
+
+
+
+
+
+
+
+           <Paper variant="outlined" sx = {styles.fieldContainer}>
            <Typography
                 sx={styles.signupText} >
-               GST Details
+               Documents Details
             </Typography>
+            <Box sx={styles.row}>
+              <FormControl sx={styles.inputField} fullWidth>
+            <InputLabel id="Document">{"Documet Type"}</InputLabel>
+            <Select
+              labelId="Document"
+              id="Document"
+              value={creds.undefined || ""}
+              label="Area"
+              onChange={handleChange}
+            >
+              <MenuItem value={"RD"}>Aadhar Card</MenuItem>
+              <MenuItem value={"KSD"}>Pan Card</MenuItem>
+              <MenuItem value={"NT"}>Voter Id Card</MenuItem>
+              <MenuItem value={"BRD"}>Ration Card</MenuItem>
+              <MenuItem value={"BRM"}>Others</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={styles.inputField}></Box>
+           </Box>
             <Box sx={styles.row}>
            
            <TextField
                     id="gstin"
                     type="number"
-                    label="GSTIN"
-                    placeholder="GSTIN"
+                    label="Document Detail"
+                    placeholder="Document Detail"
                     value={creds.gstin || ''}
                     onChange={handleChange}
                     sx={styles.inputField}
                 />
                 <Box sx={styles.gstUploadRow}>
             <Typography sx={styles.inputBtnText}>
-                Upload your GSTIN Document
+                Upload your Document
             </Typography>
             <input style={styles.inputBtn} type={"file"}></input>
             </Box>
             </Box>
+            </Paper>
+
+
+
+            <Paper variant="outlined" sx = {styles.fieldContainer}>
+
             <Typography
                 sx={styles.signupText} >
                Billing Address
@@ -247,6 +243,25 @@ export default function ApplicationForm() {
                 sx={styles.inputField}
             />
             
+           </Box>
+           <Box sx={styles.row}>
+              <FormControl sx={styles.inputField} fullWidth>
+            <InputLabel id="areaBa">{"Area"}</InputLabel>
+            <Select
+              labelId="areaBa"
+              id="areaBa"a
+              value={creds.undefined || ""}
+              label="Area"
+              onChange={handleChange}
+            >
+              <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
+              <MenuItem value={"KSD"}>Kashidih</MenuItem>
+              <MenuItem value={"NT"}>Northern Town</MenuItem>
+              <MenuItem value={"BRD"}>Baridih</MenuItem>
+              <MenuItem value={"BRM"}>Burmamines</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={styles.inputField}></Box>
            </Box>
            <Box sx={styles.row}>
            <TextField
@@ -291,33 +306,18 @@ export default function ApplicationForm() {
             />
            </Box>
            
-           <Box sx={styles.row}>
-              <FormControl sx={styles.inputField} fullWidth>
-            <InputLabel id="areaBa">{"Area"}</InputLabel>
-            <Select
-              labelId="areaBa"
-              id="areaBa"
-              value={creds.undefined || ""}
-              label="Area"
-              onChange={handleChange}
-            >
-              <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
-              <MenuItem value={"KSD"}>Kashidih</MenuItem>
-              <MenuItem value={"NT"}>Northern Town</MenuItem>
-              <MenuItem value={"BRD"}>Baridih</MenuItem>
-              <MenuItem value={"BRM"}>Burmamines</MenuItem>
-            </Select>
-          </FormControl>
-          <Box sx={styles.inputField}></Box>
-           </Box>
+          
 
+</Paper>
+
+<Paper variant="outlined" sx = {styles.fieldContainer}>
 
 
 
         
            <Typography
                 sx={styles.signupText} >
-               Pickup Address
+               Garbage Pickup Address
             </Typography>
 
 
@@ -354,7 +354,25 @@ export default function ApplicationForm() {
            </Box>
 
 
-
+           <Box sx={styles.row}>
+           <FormControl sx={styles.inputField} fullWidth>
+        <InputLabel id="Area">area</InputLabel>
+        <Select
+          labelId="Area"
+          id="areaPa"
+          value={creds.undefined || ""}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
+          <MenuItem value={"KSD"}>Kashidih</MenuItem>
+          <MenuItem value={"NT"}>Northern Town</MenuItem>
+          <MenuItem value={"BRD"}>Baridih</MenuItem>
+          <MenuItem value={"BRM"}>Burmamines</MenuItem>
+        </Select>
+      </FormControl>
+      <Box sx={styles.inputField}></Box>
+           </Box>
 
 
 
@@ -399,25 +417,8 @@ export default function ApplicationForm() {
                 sx={styles.inputFieldRO}
             />
            </Box>
-           <Box sx={styles.row}>
-           <FormControl sx={styles.inputField} fullWidth>
-        <InputLabel id="Area">area</InputLabel>
-        <Select
-          labelId="Area"
-          id="areaPa"
-          value={creds.undefined || ""}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
-          <MenuItem value={"KSD"}>Kashidih</MenuItem>
-          <MenuItem value={"NT"}>Northern Town</MenuItem>
-          <MenuItem value={"BRD"}>Baridih</MenuItem>
-          <MenuItem value={"BRM"}>Burmamines</MenuItem>
-        </Select>
-      </FormControl>
-      <Box sx={styles.inputField}></Box>
-           </Box>
+          
+           </Paper>
            {/* <Box sx={styles.row}>
                 <TextField
                 id="Longitude"
@@ -479,11 +480,26 @@ export default function ApplicationForm() {
   </RadioGroup>
 </FormControl> */}
 
+<FormGroup>
+              <FormControlLabel control={<Checkbox 
+              onChange={()=>
+              {
+                if(btn==true){
+                  setBtn(false)
+                  }
+                else{
+                  setBtn(true)
+                }
+              }
+              }/>}
 
+              label="Terms and Conditions" />
+            </FormGroup>
         <Button 
         variant="contained" 
         sx={styles.submitBtn} 
         onClick={submitHandler}
+        disabled={btn}
         >Submit Application
         </Button>
         <IconButton onClick={()=>{divForScroll.current.scrollIntoView({behavior: "smooth"})}} sx={styles.topScrollBtn} color="primary" aria-label="upload picture" component="label">
