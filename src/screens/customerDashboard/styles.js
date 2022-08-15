@@ -59,6 +59,9 @@ export const styles = {
         display:"flex",
         justifyContent:"start",
         alignItems:"start",
+        '@media (max-width: 650px)': {
+            width:"90%"
+          },
     },
     detailsRow:{
         display:"flex",
