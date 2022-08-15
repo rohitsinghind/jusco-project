@@ -4,7 +4,7 @@ export const styles = {
         flexDirection:"column",
         alignItems:"center",
         justifyContent:"center",
-        background:"white",
+        background:"#F0F2F7",
         py:"20px",
         position:"relative"
     },
@@ -52,6 +52,13 @@ export const styles = {
             flexDirection:"column",
             justifyContent:"center"
           },
+    },
+    fieldContainer:{
+        margin:"10px",
+        padding:"10px",
+        display:"flex",
+        justifyContent:"start",
+        alignItems:"start",
     },
     detailsRow:{
         display:"flex",
