@@ -151,7 +151,7 @@ export default function CustomerDashboard() {
               <Typography sx={styles.field}>GSTIN</Typography>
               <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
             </Box>
-            <Button variant="outlined">view uploaded document</Button>
+            <Button variant="contained">view uploaded document</Button>
           </div>
         </Box>
         </Paper>
@@ -225,7 +225,7 @@ export default function CustomerDashboard() {
           </div>
         </Box>
         </Paper>
-        <Button variant="outlined" onClick={() => window.print()}>Download</Button>
+        <Button variant="contained" onClick={() => window.print()}>Download</Button>
       </Container>
     </>
   );

@@ -116,4 +116,9 @@ export const styles = {
         right:"30px",
         background:"#ebebeb"
     },
+    left:{
+        display:"flex",
+        flexDirection:"column",
+        width:"100%"
+    }
 }

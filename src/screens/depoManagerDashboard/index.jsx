@@ -70,16 +70,16 @@ export default function DepoManagerDashboard() {
         <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab sx={styles.tab} label="New application" {...a11yProps(0)} />
-          <Tab sx={styles.tab} label="In progress" {...a11yProps(1)} />
+          <Tab sx={styles.tab} label="Application" {...a11yProps(0)} />
+          {/* <Tab sx={styles.tab} label="In progress" {...a11yProps(1)} />
           <Tab sx={styles.tab} label="completed" {...a11yProps(2)} />
-          <Tab sx={styles.tab} label="Rejected" {...a11yProps(3)} />
+          <Tab sx={styles.tab} label="Rejected" {...a11yProps(3)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <NewApplication/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      {/* <TabPanel value={value} index={1}>
       In progress
       </TabPanel>
       <TabPanel value={value} index={2}>
@@ -87,7 +87,7 @@ export default function DepoManagerDashboard() {
       </TabPanel>
       <TabPanel value={value} index={3}>
       Rejected
-      </TabPanel>
+      </TabPanel> */}
     </Box>
 
         </Container>

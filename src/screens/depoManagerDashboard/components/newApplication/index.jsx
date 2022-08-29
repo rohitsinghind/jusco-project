@@ -32,17 +32,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   }));
   
-  function createData(name, mobile, email, area, gstNo,isReturn) {
-    return { name, mobile, email, area, gstNo,isReturn };
+  function createData(name, mobile, email, area, gstNo,isReturn,expiration) {
+    return { name, mobile, email, area, gstNo,isReturn,expiration };
   }
   
   const rows = [
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "No"),
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "yes"),
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "yes"),
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "No"),
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "yes"),
-    createData( "Mr. Rohit Kumar", "9876543210", "rohitkumar@mail.com", "Kashidih", "20ABCD890J1KZW", "yes"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "No"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "yes"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "yes"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "No"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "yes"),
+    createData( "1","#1232342","Mr. Rohit Kumar", "9876543210", "Baridih", "Kashidih", "12/01/2023",  "yes"),
   ];
 
 export default function NewApplication() {
@@ -55,13 +55,14 @@ export default function NewApplication() {
       <Table sx={{ minWidth: "700" }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Sl.No</StyledTableCell>
+            <StyledTableCell align="right">Application Id</StyledTableCell>
+            <StyledTableCell align="right">Name</StyledTableCell>
             <StyledTableCell align="right">Mobile No.</StyledTableCell>
-            <StyledTableCell align="right">E-Mail ID</StyledTableCell>
             <StyledTableCell align="right">Area</StyledTableCell>
-            <StyledTableCell align="right">GSTIN</StyledTableCell>
-            <StyledTableCell align="right">Return Customer</StyledTableCell>
+            <StyledTableCell align="right">Entry/Application Date</StyledTableCell>
             <StyledTableCell align="right">Action</StyledTableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,7 +75,7 @@ export default function NewApplication() {
               <StyledTableCell align="right">{row.email}</StyledTableCell>
               <StyledTableCell align="right">{row.area}</StyledTableCell>
               <StyledTableCell align="right">{row.gstNo}</StyledTableCell>
-              <StyledTableCell align="right">{row.isReturn}</StyledTableCell>
+              <StyledTableCell align="right">{row.expiration}</StyledTableCell>
               <StyledTableCell align="right"><Button onClick={()=>{navigate("/applicationDetails")}} variant="text">View</Button></StyledTableCell>
             </StyledTableRow>
           ))}

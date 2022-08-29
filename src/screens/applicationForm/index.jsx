@@ -89,7 +89,7 @@ export default function ApplicationForm() {
             </Typography>
            <Box sx={styles.row}>
             <div style={mediaQuery.matches?styles.flex:styles}>
-                <FormControl sx={styles.inputFieldSm} fullWidth>
+                <FormControl size="small" sx={styles.inputFieldSm} fullWidth>
                   <InputLabel id="salutation">{"salutation"}</InputLabel>
                   <Select
                     labelId="salutation"
@@ -106,6 +106,7 @@ export default function ApplicationForm() {
                   </Select>
                 </FormControl>
                 <TextField
+                          size="small"
                 id="Fname"
                 type="text"
                 label="First Name"
@@ -116,6 +117,7 @@ export default function ApplicationForm() {
             />
             </div>
             <TextField
+                      size="small"
                 id="Lname"
                 type="text"
                 label="Last Name"
@@ -127,6 +129,7 @@ export default function ApplicationForm() {
            </Box>
            <Box sx={styles.row}>
                 <TextField
+                          size="small"
                 id="mobile"
                 type="number"
                 label="Mobile Number"
@@ -135,18 +138,48 @@ export default function ApplicationForm() {
                 onChange={handleChange}
                 sx={styles.inputField}
             />
-            <TextField
+
+              <TextField
+                          size="small"
+                id="mobile"
+                type="number"
+                label="Confirm Mobile Number"
+                placeholder="Confirm Mobile Number"
+                value={creds.mobile || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            />
+            
+           </Box>
+
+           <Box sx={styles.row}>
+                <TextField
+                          size="small"
                 id="email"
                 type="email"
-                label="Email Id"
-                placeholder="Email Id"
+                label="email id"
+                placeholder="email id"
                 value={creds.email || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
+
+              <TextField
+                          size="small"
+                id="email"
+                type="id"
+                label="Confirm email id"
+                placeholder="Confirm email id"
+                value={creds.email || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            />
+            
            </Box>
+
            <Box sx={styles.row}>
                 <TextField
+                          size="small"
                 id="designation"
                 type="text"
                 label="Designation"
@@ -178,7 +211,7 @@ export default function ApplicationForm() {
                Documents Details
             </Typography>
             <Box sx={styles.row}>
-              <FormControl sx={styles.inputField} fullWidth>
+              <FormControl size="small" sx={styles.inputField} fullWidth>
             <InputLabel id="Document">{"Documet Type"}</InputLabel>
             <Select
               labelId="Document"
@@ -198,6 +231,7 @@ export default function ApplicationForm() {
             <Box sx={styles.row}>
            
            <TextField
+                    size="small"
                     id="gstin"
                     type="number"
                     label="Document No."
@@ -225,6 +259,7 @@ export default function ApplicationForm() {
             </Typography>
            <Box sx={styles.row}>
            <TextField
+                    size="small"
                 id="nameBa"
                 type="text"
                 label="Establishment Name"
@@ -234,6 +269,7 @@ export default function ApplicationForm() {
                 sx={styles.inputField}
             />
                 <TextField
+                          size="small"
                 id="streetHouseNoBa"
                 type="text"
                 label="Street/House Number"
@@ -245,7 +281,7 @@ export default function ApplicationForm() {
             
            </Box>
            <Box sx={styles.row}>
-              <FormControl sx={styles.inputField} fullWidth>
+              <FormControl size="small" sx={styles.inputField} fullWidth>
             <InputLabel id="areaBa">{"Area"}</InputLabel>
             <Select
               labelId="areaBa"
@@ -262,6 +298,7 @@ export default function ApplicationForm() {
             </Select>
           </FormControl>
           <TextField
+                    size="small"
                 id="postalCodeBa"
                 type="number"
                 label="Postal Code"
@@ -274,6 +311,7 @@ export default function ApplicationForm() {
            <Box sx={styles.row}>
            
            <TextField
+                    size="small"
                 id="cityBa"
                 type="text"
                 label="City"
@@ -283,6 +321,7 @@ export default function ApplicationForm() {
                 sx={styles.inputFieldRO}
             />
             <TextField
+                      size="small"
                     id="Region"
                     type="text"
                     label="Region"
@@ -297,6 +336,7 @@ export default function ApplicationForm() {
               
                 
             <TextField
+                      size="small"
                 id="countryBa"
                 type="text"
                 label="Country"
@@ -332,6 +372,7 @@ export default function ApplicationForm() {
 
            <Box sx={styles.row}>
            <TextField
+                    size="small"
                 id="namePa"
                 type="text"
                 label="Establishment Name"
@@ -343,6 +384,7 @@ export default function ApplicationForm() {
 
 
                 <TextField
+                          size="small"
                 id="streetHouseNoPa"
                 type="text"
                 label="Street/House Number"
@@ -357,7 +399,7 @@ export default function ApplicationForm() {
 
 
            <Box sx={styles.row}>
-           <FormControl sx={styles.inputField} fullWidth>
+           <FormControl size="small" sx={styles.inputField} fullWidth>
         <InputLabel id="Area">area</InputLabel>
         <Select
           labelId="Area"
@@ -374,6 +416,7 @@ export default function ApplicationForm() {
         </Select>
       </FormControl>
       <TextField
+                size="small"
                 id="postalCodePa"
                 type="number"
                 label="Postal Code"
@@ -389,6 +432,7 @@ export default function ApplicationForm() {
            <Box sx={styles.row}>
            
                 <TextField
+                          size="small"
                 id="cityPa"
                 type="text"
                 label="City"
@@ -398,6 +442,7 @@ export default function ApplicationForm() {
                 sx={styles.inputFieldRO}
             />
            <TextField
+                    size="small"
                 id="regionPa"
                 type="text"
                 label="Region"
@@ -410,6 +455,7 @@ export default function ApplicationForm() {
            <Box sx={styles.row}>
            
              <TextField
+                      size="small"
                 id="country"
                 type="text"
                 label="Country"
@@ -424,6 +470,7 @@ export default function ApplicationForm() {
            </Paper>
            {/* <Box sx={styles.row}>
                 <TextField
+                          size="small"
                 id="Longitude"
                 type="text"
                 label="Longitude"
@@ -433,6 +480,7 @@ export default function ApplicationForm() {
                 sx={styles.inputField}
             />
            <TextField
+                    size="small"
                 id="Latitude"
                 type="text"
                 label="Latitude"
