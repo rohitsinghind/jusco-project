@@ -1,7 +1,7 @@
 import React from 'react'
-import { styles } from './styles'
+import './styles.css'
 import {useNavigate} from "react-router-dom"
-
+import { Typography } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -11,6 +11,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -52,6 +56,26 @@ export default function NewApplication() {
   return (
     <>
         <TableContainer component={Paper}>
+        <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <React.Fragment>
+          <Button variant="contained" {...bindTrigger(popupState)}>
+            Dashboard
+          </Button>
+          <Menu {...bindMenu(popupState)}>
+            <MenuItem onClick={popupState.close}>Under level 1 review</MenuItem>
+            <MenuItem onClick={popupState.close}>Under level 2 review</MenuItem>
+            <MenuItem onClick={popupState.close}>Pending customer acceptance</MenuItem>
+            <MenuItem onClick={popupState.close}>Approved</MenuItem>
+            <MenuItem onClick={popupState.close}>Application Rejected</MenuItem>
+            <MenuItem onClick={popupState.close}>Under level 2 review with reason</MenuItem>
+          </Menu>
+        </React.Fragment>
+      )}
+    </PopupState>
+
+    <div className="line"></div>
+          <FilterListIcon/> Sort
       <Table sx={{ minWidth: "700" }} aria-label="customized table">
         <TableHead>
           <TableRow>

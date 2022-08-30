@@ -1,7 +1,7 @@
 import React, { useState,useRef } from "react";
 import { styles } from "./styles";
 import Iframe from 'react-iframe';
-
+import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -50,6 +50,9 @@ export default function ApplicationDetails() {
         <Typography sx={styles.head}>Bulk Generation System</Typography>
         <Typography sx={styles.dashboardText}>Application Details</Typography>
         
+
+
+        <Paper variant="outlined" sx={styles.fieldContainer}>
         <Box sx={styles.row}>
         <div>
         <Typography sx={styles.dashboardText}>Personal Info</Typography>
@@ -80,8 +83,10 @@ export default function ApplicationDetails() {
           <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
         </Box>
         </div>
-
         </Box>
+        </Paper>
+
+        <Paper variant="outlined" sx={styles.fieldContainer}>
         <Box sx={styles.row}>
           <div>
         <Typography sx={styles.dashboardText}>Billing Address</Typography>
@@ -147,7 +152,7 @@ export default function ApplicationDetails() {
         </Box>
         </div>
         </Box>
-
+</Paper>
         {/* <Box sx={styles.row}>
           <div>
           <Typography sx={styles.dashboardText}></Typography>
@@ -218,8 +223,9 @@ export default function ApplicationDetails() {
             />
            </Box>
             
-<div style={styles.left}>
-  
+           <Paper variant="outlined" sx={styles.fieldContainer}>
+
+<div>
 <FormControl>
   <FormLabel id="Frequency" sx={styles.head2}>Frequency of Collection per day</FormLabel>
   <RadioGroup
@@ -248,7 +254,9 @@ export default function ApplicationDetails() {
     <FormControlLabel value="Signature on Mobile" control={<Checkbox />} label="Signature on Mobile" />
   </RadioGroup>
 </FormControl>
+</div>
 <br/>
+<div>
 <FormControl>
   <FormLabel id="Frequency" sx={styles.head2}>Customer Category </FormLabel>
   <RadioGroup
@@ -262,6 +270,7 @@ export default function ApplicationDetails() {
     <FormControlLabel value="B2C" control={<Radio />} label="B2C" />
   </RadioGroup>
 </FormControl>
+
 <br/>
 
 {/* <FormControl>
@@ -311,10 +320,9 @@ export default function ApplicationDetails() {
         </Select>
       </FormControl>
       </Box>
+      </div>
 
-  </div>       
-
-
+</Paper>
 <Button 
         variant="contained" 
         sx={styles.submitBtn} 
