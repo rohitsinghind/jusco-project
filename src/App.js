@@ -7,6 +7,8 @@ import CustomerDashboard from "./screens/customerDashboard";
 import AdminLogin from "./screens/adminLogin";
 import DepoManagerDashboard from "./screens/depoManagerDashboard";
 import ApplicationDetails from "./screens/depoManagerDashboard/components/applicationDetails";
+import { SignatureComponent } from "@syncfusion/ej2-react-inputs";
+
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
       </Routes>
     </Router>
     </div>
+    {/* <SignatureComponent/> */}
     </>
   );
 }

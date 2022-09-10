@@ -1,6 +1,7 @@
 import React, { useState,useRef } from "react";
 import { styles } from "./styles";
 import Iframe from 'react-iframe';
+
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -17,7 +18,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Checkbox, FormLabel } from '@mui/material';
-
+import UsrSign from "../signaturePad";
 export default function ApplicationDetails() {
   
   const mediaQuery = window.matchMedia("(max-width: 650px)");
@@ -322,6 +323,12 @@ export default function ApplicationDetails() {
       </Box>
       </div>
 
+</Paper>
+<Paper variant="outlined" sx={styles.fieldContainer}>
+        <Box sx={styles.row}> 
+        <UsrSign/>
+          
+        </Box>
 </Paper>
 <Button 
         variant="contained" 
