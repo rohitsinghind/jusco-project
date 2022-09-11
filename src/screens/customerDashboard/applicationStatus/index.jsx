@@ -1,106 +1,28 @@
 import React, { useState } from "react";
 import { styles } from "./styles";
-
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import { useNavigate } from "react-router-dom";
 
-const steps = [
-  "New Application",
-  "Site Visited",
-  "Rate Proposed",
-  "Customer Acknowledgement",
-  "B-HOD Approval",
-  "Customer NO. Generated",
-];
-
-export default function CustomerDashboard() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [skipped, setSkipped] = useState(new Set());
-
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
+export default function customerApplicationStatus() {
   const mediaQuery = window.matchMedia("(max-width: 650px)");
-  let navigate = useNavigate();
+
   return (
     <>
       <Container maxWidth="xl" sx={styles.container}>
         <img
           style={mediaQuery.matches ? styles.imgLogoMobile : styles.imgLogo}
-          src={require("../../assets/image/logo.png")}
+          src={require("../../../assets/image/logo.png")}
           alt=""
           srcset=""
         />
         <Typography sx={styles.head}>Bulk Generation System</Typography>
-        <Typography sx={styles.dashboardText}>Application Details</Typography>
+        <Typography sx={styles.dashboardText}>
+          Application Status Page
+        </Typography>
 
-        {/* <Box sx={styles.stepper}>
-          <Stepper
-            activeStep={activeStep}
-            orientation={mediaQuery.matches ? "vertical" : "horizontal"}
-          >
-            {steps.map((label, index) => {
-              const stepProps = {};
-              const labelProps = {};
-             
-              if (isStepSkipped(index)) {
-                stepProps.completed = false;
-              }
-              return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
-        </Box>
-         */}
         <Paper variant="outlined" sx={styles.fieldContainer}>
           <Box sx={styles.row}>
             <div>
@@ -116,7 +38,7 @@ export default function CustomerDashboard() {
               <Typography sx={styles.dashboardText}></Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Application Status</Typography>
-                <Typography sx={styles.fieldData}>Pending</Typography>
+                <Typography sx={styles.fieldData}>Reviewed</Typography>
               </Box>
             </div>
           </Box>
@@ -230,20 +152,55 @@ export default function CustomerDashboard() {
             </div>
           </Box>
         </Paper>
-        <Button variant="contained" onClick={() => window.print()}>
-          Download
-        </Button>
-        <br />
-        <br />
-        <Button
-          sx={{ background: "green" }}
-          variant="contained"
-          onClick={() => {
-            navigate("/applicationStatus");
-          }}
-        >
-          Check Status
-        </Button>
+
+        {/* jhsdkjfasdfhdlsakjfjshsadlfh */}
+
+        <Paper variant="outlined" sx={styles.fieldContainer}>
+          <Box sx={styles.row}>
+            <div>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>
+                  Frequency of Collection per day
+                </Typography>
+                <Typography sx={styles.fieldData}>Once</Typography>
+              </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Customer Category</Typography>
+                <Typography sx={styles.fieldData}>B2B</Typography>
+              </Box>
+            </div>
+
+            <div>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Area</Typography>
+                <Typography sx={styles.fieldData}>Northen Town</Typography>
+              </Box>
+
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Rate</Typography>
+                <Typography sx={styles.fieldData}>15 Rupees</Typography>
+              </Box>
+            </div>
+          </Box>
+        </Paper>
+
+        <Box>
+          <Button
+            sx={{ marginRight: "20px" }}
+            variant="contained"
+            color="success"
+            onClick={() => alert("Accepted")}
+          >
+            Accept
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => alert("Rejected")}
+          >
+            Reject
+          </Button>
+        </Box>
       </Container>
     </>
   );

@@ -1,29 +1,33 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { styles } from "./styles";
-import Iframe from 'react-iframe';
+import Iframe from "react-iframe";
 
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Checkbox, FormLabel } from '@mui/material';
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Checkbox, FormLabel } from "@mui/material";
 import UsrSign from "../signaturePad";
 export default function ApplicationDetails() {
-  
   const mediaQuery = window.matchMedia("(max-width: 650px)");
 
-  const [creds, setCreds] = useState({Longitude:"", Latitude:"",area: '',rate:"", });
+  const [creds, setCreds] = useState({
+    Longitude: "",
+    Latitude: "",
+    area: "",
+    rate: "",
+  });
 
   const handleChange = (key) => {
     key.preventDefault();
@@ -34,9 +38,9 @@ export default function ApplicationDetails() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-  }
+  };
 
-  const divForScroll = useRef(null)
+  const divForScroll = useRef(null);
 
   return (
     <>
@@ -50,110 +54,110 @@ export default function ApplicationDetails() {
         />
         <Typography sx={styles.head}>Bulk Generation System</Typography>
         <Typography sx={styles.dashboardText}>Application Details</Typography>
-        
-
 
         <Paper variant="outlined" sx={styles.fieldContainer}>
-        <Box sx={styles.row}>
-        <div>
-        <Typography sx={styles.dashboardText}>Personal Info</Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Name</Typography>
-          <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
-        </Box>
+          <Box sx={styles.row}>
+            <div>
+              <Typography sx={styles.dashboardText}>Personal Info</Typography>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Name</Typography>
+                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Mobile Number</Typography>
-          <Typography sx={styles.fieldData}>9876543210</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Mobile Number</Typography>
+                <Typography sx={styles.fieldData}>9876543210</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Email</Typography>
-          <Typography sx={styles.fieldData}>rohitkumar@mail.com</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Email</Typography>
+                <Typography sx={styles.fieldData}>
+                  rohitkumar@mail.com
+                </Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Designation</Typography>
-          <Typography sx={styles.fieldData}>Sr. Manager</Typography>
-        </Box>
-        </div>
-        <div>
-        <Typography sx={styles.dashboardText}>GSTIN Details</Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>GSTIN</Typography>
-          <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
-        </Box>
-        </div>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Designation</Typography>
+                <Typography sx={styles.fieldData}>Sr. Manager</Typography>
+              </Box>
+            </div>
+            <div>
+              <Typography sx={styles.dashboardText}>GSTIN Details</Typography>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>GSTIN</Typography>
+                <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
+              </Box>
+            </div>
+          </Box>
         </Paper>
 
         <Paper variant="outlined" sx={styles.fieldContainer}>
-        <Box sx={styles.row}>
-          <div>
-        <Typography sx={styles.dashboardText}>Billing Address</Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Name</Typography>
-          <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
-        </Box>
+          <Box sx={styles.row}>
+            <div>
+              <Typography sx={styles.dashboardText}>Billing Address</Typography>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Name</Typography>
+                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Street/ House No.</Typography>
-          <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Street/ House No.</Typography>
+                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>City</Typography>
-          <Typography sx={styles.fieldData}>Jamshedpur</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>City</Typography>
+                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Region</Typography>
-          <Typography sx={styles.fieldData}>Jharkhand</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Region</Typography>
+                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Country</Typography>
-          <Typography sx={styles.fieldData}>India</Typography>
-        </Box>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Postal Code</Typography>
-          <Typography sx={styles.fieldData}>831001</Typography>
-        </Box>
-        </div>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Country</Typography>
+                <Typography sx={styles.fieldData}>India</Typography>
+              </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Postal Code</Typography>
+                <Typography sx={styles.fieldData}>831001</Typography>
+              </Box>
+            </div>
 
-        <div>
-        <Typography sx={styles.dashboardText}>Pickup Address</Typography>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Name</Typography>
-          <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
-        </Box>
+            <div>
+              <Typography sx={styles.dashboardText}>Pickup Address</Typography>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Name</Typography>
+                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Street/ House No.</Typography>
-          <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Street/ House No.</Typography>
+                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>City</Typography>
-          <Typography sx={styles.fieldData}>Jamshedpur</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>City</Typography>
+                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Region</Typography>
-          <Typography sx={styles.fieldData}>Jharkhand</Typography>
-        </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Region</Typography>
+                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+              </Box>
 
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Country</Typography>
-          <Typography sx={styles.fieldData}>India</Typography>
-        </Box>
-        <Box sx={styles.detailsRow}>
-          <Typography sx={styles.field}>Postal Code</Typography>
-          <Typography sx={styles.fieldData}>831001</Typography>
-        </Box>
-        </div>
-        </Box>
-</Paper>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Country</Typography>
+                <Typography sx={styles.fieldData}>India</Typography>
+              </Box>
+              <Box sx={styles.detailsRow}>
+                <Typography sx={styles.field}>Postal Code</Typography>
+                <Typography sx={styles.fieldData}>831001</Typography>
+              </Box>
+            </div>
+          </Box>
+        </Paper>
         {/* <Box sx={styles.row}>
           <div>
           <Typography sx={styles.dashboardText}></Typography>
@@ -186,95 +190,118 @@ export default function ApplicationDetails() {
         </div>
         </Box> */}
 
+        <Typography sx={styles.head2}>Select Location</Typography>
+        <Iframe
+          url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.91484915413!2d86.17577080000002!3d22.7840284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e31989f0e2b5%3A0xeeec8e81ce9b344!2sJamshedpur%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1659242270720!5m2!1sen!2sin"
+          width={mediaQuery.matches ? "90%" : "70%"}
+          height="450px"
+          id="map"
+          className="myClassname"
+          display="initial"
+          position="relative"
+          allow="fullscreen"
+        />
+        <Box sx={styles.inputrow}>
+          <TextField
+            InputProps={{
+              readOnly: true,
+            }}
+            id="Longitude"
+            type="text"
+            label="Longitude"
+            value="22.804565"
+            onChange={handleChange}
+            sx={styles.inputField}
+          />
+          <TextField
+            InputProps={{
+              readOnly: true,
+            }}
+            id="Latitude"
+            type="text"
+            label="Latitude"
+            value="86.202873"
+            onChange={handleChange}
+            sx={styles.inputField}
+          />
+        </Box>
 
-        <Typography  sx={styles.head2}>Select Location</Typography>
-           <Iframe url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.91484915413!2d86.17577080000002!3d22.7840284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e31989f0e2b5%3A0xeeec8e81ce9b344!2sJamshedpur%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1659242270720!5m2!1sen!2sin"
-            width={mediaQuery.matches?"90%":"70%"}
-            height="450px"
-            id="map"
-            className="myClassname"
-            display="initial"
-            position="relative"
-            allow = "fullscreen"
-            />
-      <Box sx={styles.inputrow}>
-                <TextField
-                InputProps={{
-                  readOnly: true,
-                }}
-                id="Longitude"
-                type="text"
-                label="Longitude"
-                value="22.804565"
-              
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
-           <TextField
-           InputProps={{
-            readOnly: true,
-          }}
-                id="Latitude"
-                type="text"
-                label="Latitude"
-                value="86.202873"
-              
-                onChange={handleChange}
-                sx={styles.inputField}
-            />
-           </Box>
-            
-           <Paper variant="outlined" sx={styles.fieldContainer}>
+        <Paper variant="outlined" sx={styles.fieldContainer}>
+          <div>
+            <FormControl>
+              <FormLabel id="Frequency" sx={styles.head2}>
+                Frequency of Collection per day
+              </FormLabel>
+              <RadioGroup
+                row
+                sx={styles.radioGroup}
+                aria-labelledby="Frequency of Collection per day"
+                defaultValue="Once"
+                name="frequency"
+              >
+                <FormControlLabel
+                  value="Once"
+                  control={<Radio />}
+                  label="Once"
+                />
+                <FormControlLabel
+                  value="Twice"
+                  control={<Radio />}
+                  label="Twice"
+                />
+                <FormControlLabel
+                  value="onCall"
+                  control={<Radio />}
+                  label="On Call"
+                />
+              </RadioGroup>
+            </FormControl>
+            <br />
+            <FormControl>
+              <FormLabel id="acknowledgement" sx={styles.head2}>
+                Mode of acknowledgement of pick ups
+              </FormLabel>
+              <RadioGroup
+                row
+                sx={styles.radioGroup}
+                aria-labelledby="Mode of acknowledgement of pick ups"
+                defaultValue="QR Code Scanning"
+                name="mode"
+              >
+                <FormControlLabel
+                  value="QR Code Scanning"
+                  control={<Radio />}
+                  label="QR Code Scanning"
+                />
+                <FormControlLabel
+                  value="Signature on Mobile"
+                  control={<Checkbox />}
+                  label="Signature on Mobile"
+                />
+              </RadioGroup>
+            </FormControl>
+          </div>
+          <br />
+          <div>
+            <FormControl>
+              <FormLabel id="Frequency" sx={styles.head2}>
+                Customer Category{" "}
+              </FormLabel>
+              <RadioGroup
+                row
+                sx={styles.radioGroup}
+                aria-labelledby="Frequency of Collection per day"
+                defaultValue="Once"
+                name="frequency"
+              >
+                <FormControlLabel value="B2B" control={<Radio />} label="B2B" />
+                <FormControlLabel value="B2C" control={<Radio />} label="B2C" />
+              </RadioGroup>
+            </FormControl>
 
-<div>
-<FormControl>
-  <FormLabel id="Frequency" sx={styles.head2}>Frequency of Collection per day</FormLabel>
-  <RadioGroup
-    row
-    sx = {styles.radioGroup}
-    aria-labelledby="Frequency of Collection per day"
-    defaultValue="Once"
-    name="frequency"
-  >
-    <FormControlLabel value="Once" control={<Radio />} label="Once" />
-    <FormControlLabel value="Twice" control={<Radio />} label="Twice" />
-    <FormControlLabel value="onCall" control={<Radio />} label="On Call" />
-  </RadioGroup>
-</FormControl>
-<br/>
-<FormControl>
-  <FormLabel id="acknowledgement" sx={styles.head2}>Mode of acknowledgement of pick ups</FormLabel>
-  <RadioGroup
-    row
-    sx = {styles.radioGroup}
-    aria-labelledby="Mode of acknowledgement of pick ups"
-    defaultValue="QR Code Scanning"
-    name="mode"
-  >
-    <FormControlLabel value="QR Code Scanning" control={<Radio />} label="QR Code Scanning" />
-    <FormControlLabel value="Signature on Mobile" control={<Checkbox />} label="Signature on Mobile" />
-  </RadioGroup>
-</FormControl>
-</div>
-<br/>
-<div>
-<FormControl>
-  <FormLabel id="Frequency" sx={styles.head2}>Customer Category </FormLabel>
-  <RadioGroup
-    row
-    sx = {styles.radioGroup}
-    aria-labelledby="Frequency of Collection per day"
-    defaultValue="Once"
-    name="frequency"
-  >
-    <FormControlLabel value="B2B" control={<Radio />} label="B2B" />
-    <FormControlLabel value="B2C" control={<Radio />} label="B2C" />
-  </RadioGroup>
-</FormControl>
+            <br />
 
-<br/>
-
-{/* <FormControl>
+            {/* <FormControl>
   <FormLabel id="Frequency" sx={styles.head2}>Priority of the customer</FormLabel>
   <RadioGroup
     row
@@ -288,57 +315,64 @@ export default function ApplicationDetails() {
     <FormControlLabel value="HIGH" control={<Radio />} label="HIGH" />
   </RadioGroup>
 </FormControl> */}
-<br/>
-<Box sx={styles.inputrow}>
-           <FormControl sx={styles.inputField} fullWidth>
-        <InputLabel id="Area">Area</InputLabel>
-        <Select
-          labelId="area"
-          id="area"
-          value={creds.area || ""}
-          label="area"
-          onChange={handleChange}
+            <br />
+            <Box sx={styles.inputrow}>
+              <FormControl sx={styles.inputField} fullWidth>
+                <InputLabel id="Area">Area</InputLabel>
+                <Select
+                  labelId="area"
+                  id="area"
+                  value={creds.area || ""}
+                  label="area"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
+                  <MenuItem value={"KSD"}>Kashidih</MenuItem>
+                  <MenuItem value={"NT"}>Northern Town</MenuItem>
+                  <MenuItem value={"BRD"}>Baridih</MenuItem>
+                  <MenuItem value={"BRM"}>Burmamines</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={styles.inputField} fullWidth>
+                <InputLabel id="rate">Rate/ Pickup</InputLabel>
+                <Select
+                  labelId="rate"
+                  id="rate"
+                  value={creds.rate || ""}
+                  label="Rate/ Pickup"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"10"}>10.00</MenuItem>
+                  <MenuItem value={"15"}>15.00</MenuItem>
+                  <MenuItem value={"20"}>20.00</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </div>
+        </Paper>
+        <Paper variant="outlined" sx={styles.fieldContainer}>
+          <Box sx={styles.row}>
+            <UsrSign />
+          </Box>
+        </Paper>
+        <Button
+          variant="contained"
+          sx={styles.submitBtn}
+          onClick={submitHandler}
         >
-          <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
-          <MenuItem value={"KSD"}>Kashidih</MenuItem>
-          <MenuItem value={"NT"}>Northern Town</MenuItem>
-          <MenuItem value={"BRD"}>Baridih</MenuItem>
-          <MenuItem value={"BRM"}>Burmamines</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl sx={styles.inputField} fullWidth>
-        <InputLabel id="rate">Rate/ Pickup</InputLabel>
-        <Select
-          labelId="rate"
-          id="rate"
-          value={creds.rate || ""}
-          label="Rate/ Pickup"
-          onChange={handleChange}
-        >
-          <MenuItem value={"10"}>10.00</MenuItem>
-          <MenuItem value={"15"}>15.00</MenuItem>
-          <MenuItem value={"20"}>20.00</MenuItem>
-        </Select>
-      </FormControl>
-      </Box>
-      </div>
-
-</Paper>
-<Paper variant="outlined" sx={styles.fieldContainer}>
-        <Box sx={styles.row}> 
-        <UsrSign/>
-          
-        </Box>
-</Paper>
-<Button 
-        variant="contained" 
-        sx={styles.submitBtn} 
-        onClick={submitHandler}
-        >Submit Application
+          Submit Application
         </Button>
-        <IconButton onClick={()=>{divForScroll.current.scrollIntoView({behavior: "smooth"})}} sx={styles.topScrollBtn} color="primary" aria-label="upload picture" component="label">
-        <KeyboardArrowUpIcon />
-      </IconButton>
+        <IconButton
+          onClick={() => {
+            divForScroll.current.scrollIntoView({ behavior: "smooth" });
+          }}
+          sx={styles.topScrollBtn}
+          color="primary"
+          aria-label="upload picture"
+          component="label"
+        >
+          <KeyboardArrowUpIcon />
+        </IconButton>
       </Container>
     </>
   );

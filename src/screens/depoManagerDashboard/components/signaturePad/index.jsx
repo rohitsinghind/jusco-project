@@ -16,7 +16,7 @@ export default function UsrSign(){
 
     function save(){
         data = sigPad.current.toDataURL()
-         alert("Signature Saved")
+        alert("Signature Saved")
         clear()
         show()
     }
