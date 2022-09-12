@@ -8,6 +8,7 @@ import AdminLogin from "./screens/adminLogin";
 import DepoManagerDashboard from "./screens/depoManagerDashboard";
 import ApplicationDetails from "./screens/depoManagerDashboard/components/applicationDetails";
 import CustomerApplicationStatus from "./screens/customerDashboard/applicationStatus";
+import HodDashboard from "./screens/hodDashboard";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
               path="/applicationStatus"
               element={<CustomerApplicationStatus />}
             />
+            <Route path="/hodDashboard" element={<HodDashboard />} />
+            <Route path="/hodDasAppDetails" element="hod Application Details" />
           </Routes>
         </Router>
       </div>

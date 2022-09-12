@@ -1,146 +1,3 @@
-// import React, { useState } from "react";
-// import { styles } from "./styles";
-// import Box from "@mui/material/Box";
-// import Container from "@mui/material/Container";
-// import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
-// import PropTypes from "prop-types";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import PopupState from "material-ui-popup-state";
-// import { bindTrigger } from "material-ui-popup-state";
-// import { Menu } from "@mui/icons-material";
-// import { bindMenu } from "material-ui-popup-state";
-// import { MenuItem } from "@mui/material";
-// import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-// import ApplicationTable from "./components/ApplicationTable";
-
-// function TabPanel(props) {
-//   const { children, value, index, ...other } = props;
-
-//   return (
-//     <div
-//       role="tabpanel"
-//       hidden={value !== index}
-//       id={`simple-tabpanel-${index}`}
-//       aria-labelledby={`simple-tab-${index}`}
-//       {...other}
-//     >
-//       {value === index && (
-//         <Box sx={{ p: 3 }}>
-//           <Typography>{children}</Typography>
-//         </Box>
-//       )}
-//     </div>
-//   );
-// }
-
-// TabPanel.propTypes = {
-//   children: PropTypes.node,
-//   index: PropTypes.number.isRequired,
-//   value: PropTypes.number.isRequired,
-// };
-
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
-
-// export default function DepoManagerDashboard() {
-//   const [value, setValue] = useState(0);
-
-//   const cons = "@34";
-
-//   const handleChange = (event, newValue) => {
-//     setValue(newValue);
-//   };
-
-//   const mediaQuery = window.matchMedia("(max-width: 650px)");
-
-//   return (
-//     <>
-//       <Container maxWidth="xl" sx={styles.container}>
-//         <img
-//           style={mediaQuery.matches ? styles.imgLogoMobile : styles.imgLogo}
-//           src={require("../../assets/image/logo.png")}
-//           alt=""
-//           srcset=""
-//         />
-//         <Typography sx={styles.head}>Bulk Generation System</Typography>
-//         <Typography sx={styles.dashboardText}>Dashboard</Typography>
-
-//         <Box sx={{ width: "100%" }}>
-//           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-//             <ApplicationTable
-//               data={[
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//                 {
-//                   name: "1",
-//                   mobile: "#1232342",
-//                   email: "Mr. Rohit Kumar",
-//                   area: "9876543210",
-//                   gstNo: "Baridih",
-//                   isReturn: "Kashidih",
-//                   expiration: "12/01/2023",
-//                 },
-//               ]}
-//               actionLink="/applicationDetails"
-//             />
-
-//             <div>{cons}</div>
-//           </Box>
-//         </Box>
-//       </Container>
-//     </>
-//   );
-// }
-
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -155,12 +12,12 @@ import ApplicationTable from "./components/ApplicationTable";
 import { useState } from "react";
 import AllData from "./TableData/allData";
 
-export default function DepoManagerDashboard() {
+export default function DepoManagerDashboard(props) {
   const mediaQuery = window.matchMedia("(max-width: 650px)");
   const [Table, setTable] = useState(
     <ApplicationTable
       data={AllData.application}
-      actionLink="/applicationDetails"
+      actionLink={props.link || "/applicationDetails"}
     />
   );
 
@@ -171,7 +28,7 @@ export default function DepoManagerDashboard() {
     setTable(
       <ApplicationTable
         data={AllData[e.target.id]}
-        actionLink="/applicationDetails"
+        actionLink={props.link || "/applicationDetails"}
       />
     );
     console.log(e.target.id);
@@ -188,7 +45,9 @@ export default function DepoManagerDashboard() {
         />
 
         <Typography sx={styles.head}>Bulk Generation System</Typography>
-        <Typography sx={styles.dashboardText}>Dashboard</Typography>
+        <Typography sx={styles.dashboardText}>
+          {props.admin || "Depo Manager"} Dashboard
+        </Typography>
         <Box sx={styles.tabItemContainer}>
           <PopupState
             sx={styles.tabItem}

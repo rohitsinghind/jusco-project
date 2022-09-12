@@ -45,7 +45,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function ApplicationTable({ data, actionLink }) {
   let navigate = useNavigate();
-
+  console.log(actionLink);
   return (
     <>
       <TableContainer component={Paper}>
