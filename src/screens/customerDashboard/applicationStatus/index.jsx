@@ -6,9 +6,16 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 
-export default function customerApplicationStatus() {
+export default function customerApplicationStatus({ rev }) {
   const mediaQuery = window.matchMedia("(max-width: 650px)");
-
+  let btn;
+  if (rev) {
+    btn = (
+      <Button variant="contained" onClick={() => alert("Sent for review")}>
+        Review
+      </Button>
+    );
+  }
   return (
     <>
       <Container maxWidth="xl" sx={styles.container}>
@@ -193,6 +200,7 @@ export default function customerApplicationStatus() {
           >
             Accept
           </Button>
+          {btn}
           <Button
             variant="contained"
             color="error"

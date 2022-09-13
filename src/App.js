@@ -33,7 +33,10 @@ function App() {
               element={<CustomerApplicationStatus />}
             />
             <Route path="/hodDashboard" element={<HodDashboard />} />
-            <Route path="/hodDasAppDetails" element="hod Application Details" />
+            <Route
+              path="/hodDasAppDetails"
+              element={<CustomerApplicationStatus rev={true} />}
+            />
           </Routes>
         </Router>
       </div>
