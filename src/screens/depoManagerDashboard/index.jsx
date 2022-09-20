@@ -46,7 +46,7 @@ export default function DepoManagerDashboard(props) {
 
         <Typography sx={styles.head}>Bulk Generation System</Typography>
         <Typography sx={styles.dashboardText}>
-          {props.admin || "Depo Manager"} Dashboard
+          {props.admin || "Depot Manager"} Dashboard
         </Typography>
         <Box sx={styles.tabItemContainer}>
           <PopupState

@@ -30,21 +30,25 @@ export default function ApplicationForm() {
 
   const divForScroll = useRef(null)
 
-  const [creds, setCreds] = useState({salutation:"", undefined:"",Fname: '',Lname:"",mobile:"",email:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",areaBa:"" });
+  const [creds, setCreds] = useState({salutation:"", areaPa:"",undefined:"",doctype1:"", doc1No:"",doc2No:"",doc3No:"",Fname: '',Lname:"",mobile:"",email:"",cmobile:"",cemail:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",zoneBa:"",localityBa:"",areaBa:"",qty:"",remarks:"" });
 
   const [showPassword, setShowPassword] = useState(false)
 
-  const [check, setCheck] = useState("yes")
+  const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:"", zonePa:"", localityPa:""})
+  
+  const [btn,setBtn] = useState(true)
 
   const handleChange = (key) => {
     key.preventDefault();
     setCreds({ ...creds, [key.target.id]: key.target.value });
-    console.log(creds);
-    console.log(key.target.id);
   };
 
-  const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:""})
-  const [btn,setBtn] = useState(true)
+  const handleChange2 = (key) => {
+    key.preventDefault();
+    setVal({ ...val, [key.target.id]: key.target.value });
+  };
+
+
   const matchValue =(key)=>{
     key.preventDefault();
     setVal({
@@ -54,7 +58,9 @@ export default function ApplicationForm() {
     cityPa:creds.cityBa,
     regionPa:creds.regionBa,
     countryPa:creds.countryBa,
-    areaPa:creds.areaBa
+    areaPa:creds.areaBa,
+    zonePa:creds.zoneBa,
+    localityPa:creds.localityBa
   })
   }
 
@@ -129,7 +135,8 @@ export default function ApplicationForm() {
            </Box>
            <Box sx={styles.row}>
                 <TextField
-                          size="small"
+                size="small"
+                error={creds.mobile !== creds.cmobile}
                 id="mobile"
                 type="number"
                 label="Mobile Number"
@@ -140,12 +147,13 @@ export default function ApplicationForm() {
             />
 
               <TextField
-                          size="small"
-                id="mobile"
+              size="small"
+              error={creds.mobile !== creds.cmobile}
+                id="cmobile"
                 type="number"
                 label="Confirm Mobile Number"
                 placeholder="Confirm Mobile Number"
-                value={creds.mobile || ''}
+                value={creds.cmobile || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
@@ -154,7 +162,8 @@ export default function ApplicationForm() {
 
            <Box sx={styles.row}>
                 <TextField
-                          size="small"
+                size="small"
+                error={creds.email !== creds.cemail}
                 id="email"
                 type="email"
                 label="email id"
@@ -165,12 +174,13 @@ export default function ApplicationForm() {
             />
 
               <TextField
-                          size="small"
-                id="email"
+                size="small"
+                error={creds.email !== creds.cemail}
+                id="cemail"
                 type="id"
                 label="Confirm email id"
                 placeholder="Confirm email id"
-                value={creds.email || ''}
+                value={creds.cemail || ''}
                 onChange={handleChange}
                 sx={styles.inputField}
             />
@@ -216,14 +226,13 @@ export default function ApplicationForm() {
             <Select
               labelId="Document"
               id="Document"
-              value={creds.undefined || ""}
+              value={creds.doctype1 || ""}
               label="Documet Type"
               onChange={handleChange}
             >
-              <MenuItem value={"RD"}>GSTIN</MenuItem>
-              <MenuItem value={"KSD"}>Trade License</MenuItem>
-              <MenuItem value={"NT"}>Electricity Bill</MenuItem>
-              <MenuItem value={"BRD"}>Aadhaar</MenuItem>
+              <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
+              <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
+              <MenuItem value={"Trade License"}>Trade License</MenuItem>
             </Select>
           </FormControl>
           <Box sx={styles.inputField}></Box>
@@ -232,11 +241,101 @@ export default function ApplicationForm() {
            
            <TextField
                     size="small"
-                    id="gstin"
+                    id="doc1No"
                     type="number"
                     label="Document No."
                     placeholder="Document No."
-                    value={creds.gstin || ''}
+                    value={creds.doc1No || ''}
+                    onChange={handleChange}
+                    sx={styles.inputField}
+                />
+                <Box sx={styles.gstUploadRow}>
+            <Typography sx={styles.inputBtnText}>
+                Upload your Document
+            </Typography>
+            <input style={styles.inputBtn} type={"file"}></input>
+            </Box>
+            </Box>
+            </Paper>
+
+            <Paper variant="outlined" sx = {styles.fieldContainer}>
+           <Typography
+                sx={styles.signupText} >
+               Documents Details
+            </Typography>
+            <Box sx={styles.row}>
+              <FormControl size="small" sx={styles.inputField} fullWidth>
+            <InputLabel id="Document">{"Documet Type"}</InputLabel>
+            <Select
+              labelId="Document"
+              id="Document"
+              value={creds.undefined || ""}
+              label="Documet Type"
+              onChange={handleChange}
+            >
+              <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
+              <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
+              <MenuItem value={"Trade License"}>Trade License</MenuItem>
+              <MenuItem value={"Electricity Bill"}>Electricity Bill</MenuItem>
+              <MenuItem value={"Aadhaar"}>Aadhaar</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={styles.inputField}></Box>
+           </Box>
+            <Box sx={styles.row}>
+           
+           <TextField
+                    size="small"
+                    id="doc2No"
+                    type="number"
+                    label="Document No."
+                    placeholder="Document No."
+                    value={creds.doc2No || ''}
+                    onChange={handleChange}
+                    sx={styles.inputField}
+                />
+                <Box sx={styles.gstUploadRow}>
+            <Typography sx={styles.inputBtnText}>
+                Upload your Document
+            </Typography>
+            <input style={styles.inputBtn} type={"file"}></input>
+            </Box>
+            </Box>
+            </Paper>
+
+            <Paper variant="outlined" sx = {styles.fieldContainer}>
+           <Typography
+                sx={styles.signupText} >
+               Documents Details
+            </Typography>
+            <Box sx={styles.row}>
+              <FormControl size="small" sx={styles.inputField} fullWidth>
+            <InputLabel id="Document">{"Documet Type"}</InputLabel>
+            <Select
+              labelId="Document"
+              id="Document"
+              value={creds.undefined || ""}
+              label="Documet Type"
+              onChange={handleChange}
+            >
+              <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
+              <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
+              <MenuItem value={"Trade License"}>Trade License</MenuItem>
+              <MenuItem value={"Electricity Bill"}>Electricity Bill</MenuItem>
+              <MenuItem value={"Aadhaar"}>Aadhaar</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={styles.inputField}></Box>
+           </Box>
+            <Box sx={styles.row}>
+           
+           <TextField
+                    size="small"
+                    id="doc3No"
+                    type="number"
+                    label="Document No."
+                    placeholder="Document No."
+                    value={creds.doc3No || ''}
                     onChange={handleChange}
                     sx={styles.inputField}
                 />
@@ -280,12 +379,24 @@ export default function ApplicationForm() {
             />
             
            </Box>
+
+
            <Box sx={styles.row}>
+           <TextField
+                    size="small"
+                id="zoneBa"
+                type="number"
+                label="Zone"
+                placeholder="Zone"
+                value={creds.zoneBa || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            />
               <FormControl size="small" sx={styles.inputField} fullWidth>
             <InputLabel id="areaBa">{"Area"}</InputLabel>
             <Select
               labelId="areaBa"
-              id="areaBa"a
+              id="areaBa"
               value={creds.undefined || ""}
               label="Area"
               onChange={handleChange}
@@ -297,6 +408,21 @@ export default function ApplicationForm() {
               <MenuItem value={"BRM"}>Burmamines</MenuItem>
             </Select>
           </FormControl>
+          
+           </Box>
+
+
+           <Box sx={styles.row}>
+           <TextField
+                    size="small"
+                id="localityBa"
+                type="text"
+                label="Locality"
+                placeholder="Locality"
+                value={creds.localityBa || ''}
+                onChange={handleChange}
+                sx={styles.inputField}
+            /> 
           <TextField
                     size="small"
                 id="postalCodeBa"
@@ -378,7 +504,7 @@ export default function ApplicationForm() {
                 label="Establishment Name"
                 placeholder="Establishment Name"
                 value={val.namePa || ''}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputField}
             />
 
@@ -390,7 +516,7 @@ export default function ApplicationForm() {
                 label="Street/House Number"
                 placeholder="Street/House Number"
                 value={val.streetHouseNoPa || ''}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputField}
             />
 
@@ -399,14 +525,24 @@ export default function ApplicationForm() {
 
 
            <Box sx={styles.row}>
+           <TextField
+                size="small"
+                id="zonePa"
+                type="number"
+                label="Zone"
+                placeholder="Zone"
+                value={val.zonePa || ''}
+                onChange={handleChange2}
+                sx={styles.inputField}
+            />
            <FormControl size="small" sx={styles.inputField} fullWidth>
         <InputLabel id="Area">area</InputLabel>
         <Select
           labelId="Area"
           id="areaPa"
-          value={creds.undefined || ""}
+          value={creds.areaPa || ""}
           label="Age"
-          onChange={handleChange}
+          onChange={handleChange2}
         >
           <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
           <MenuItem value={"KSD"}>Kashidih</MenuItem>
@@ -415,6 +551,20 @@ export default function ApplicationForm() {
           <MenuItem value={"BRM"}>Burmamines</MenuItem>
         </Select>
       </FormControl>
+      
+           </Box>
+
+           <Box sx={styles.row}>
+           <TextField
+                size="small"
+                id="localityPa"
+                type="text"
+                label="locality"
+                placeholder="locality"
+                value={val.localityPa || ''}
+                onChange={handleChange2}
+                sx={styles.inputField}
+            />
       <TextField
                 size="small"
                 id="postalCodePa"
@@ -422,7 +572,7 @@ export default function ApplicationForm() {
                 label="Postal Code"
                 placeholder="Postal Code"
                 value={val.postalCodePa || ''}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputField}
             />
            </Box>
@@ -438,7 +588,7 @@ export default function ApplicationForm() {
                 label="City"
                 placeholder="Jamshedpur"
                 value={val.cityPa || 'Jamshedpur'}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputFieldRO}
             />
            <TextField
@@ -448,7 +598,7 @@ export default function ApplicationForm() {
                 label="Region"
                 placeholder="Jharkhand"
                 value={val.regionPa || "Jharkhand"}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputFieldRO}
             />
            </Box>
@@ -461,7 +611,7 @@ export default function ApplicationForm() {
                 label="Country"
                 placeholder="India"
                 value={val.countryPa || "India"}
-                onChange={handleChange}
+                onChange={handleChange2}
                 sx={styles.inputFieldRO}
             />
             <Box sx={styles.inputField}></Box>
@@ -530,6 +680,33 @@ export default function ApplicationForm() {
     <FormControlLabel value="Signature on Mobile" control={<Radio />} label="Signature on Mobile" />
   </RadioGroup>
 </FormControl> */}
+<Paper variant="outlined" sx = {styles.fieldContainer}>       
+<Box sx={styles.row}>
+<TextField
+         size="small"
+     id="qty"
+     type="text"
+     label="Approx. daily quantity of wastage"
+     placeholder="Approx. daily quantity of wastage"
+     value={creds.qty || ''}
+     onChange={handleChange}
+     sx={styles.inputField}
+ />
+     <TextField
+               size="small"
+     id="remarks"
+     type="text"
+     label="Remarks"
+     placeholder="Remarks"
+     value={creds.remarks || ''}
+     onChange={handleChange}
+     sx={styles.inputField}
+ />
+</Box>
+</Paper>
+
+
+
       <div style={{display:"flex",justifyContent:"start",width:"70%"}}>
           <FormGroup>
               <FormControlLabel control={<Checkbox 
