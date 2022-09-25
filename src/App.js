@@ -9,6 +9,9 @@ import DepoManagerDashboard from "./screens/depoManagerDashboard";
 import ApplicationDetails from "./screens/depoManagerDashboard/components/applicationDetails";
 import CustomerApplicationStatus from "./screens/customerDashboard/applicationStatus";
 import HodDashboard from "./screens/hodDashboard";
+import DoorToDoor from "./screens/doorToDoor";
+import DoorToDoorVerification from "./screens/doorToDoorVerification";
+import SendSms from "./screens/sendSms";
 
 function App() {
   return (
@@ -36,6 +39,18 @@ function App() {
             <Route
               path="/hodDasAppDetails"
               element={<CustomerApplicationStatus rev={true} />}
+            />
+             <Route
+              path="/doorToDoor"
+              element={<DoorToDoor/>}
+            />
+            <Route
+              path="/doorToDoorVerification"
+              element={<DoorToDoorVerification/>}
+            />
+            <Route
+              path="/sendSms"
+              element={<SendSms/>}
             />
           </Routes>
         </Router>
