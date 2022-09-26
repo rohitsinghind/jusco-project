@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?
+}
+
+model customer {
+  id                   String @id @unique
+  application_no       String
+  customer_id          String
+  status               String
+  salutation           String
+  first_name           String
+  last_name            String
+  mobile_no            String
+  email_id             String
+  designation          String
+  document_type_1      String
+  document_no_1        String
+  document_file_name_1 String
+  document_type_2      String
+  document_no_2        String
+  document_file_name_2 String
+  document_type_3      String
+  document_no_3        String
+  document_file_name_3 String
+  billing_estb_name    String
+  billing_street       String
+  billing_zone         String
+  billing_area         String
+  billing_locality     String
+  billing_postal_code  String
+  billing_city         String
+  billing_region       String
+  billing_country      String
+  pickup_estb_name     String
+  pickup_street        String
+  pickup_zone          String
+  pickup_area          String
+  pickup_locality      String
+  pickup_postal_code   String
+  pickup_city          String
+  pickup_region        String
+  pickup_country       String
+  daily_wastage        String
+}
