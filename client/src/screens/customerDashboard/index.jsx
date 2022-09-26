@@ -108,7 +108,7 @@ export default function CustomerDashboard() {
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Application No.</Typography>
                 <Typography sx={styles.fieldData}>
-                  TSUIL/BULK/APPL/2022-23/0073
+                  APPL/2022-23/0073
                 </Typography>
               </Box>
             </div>

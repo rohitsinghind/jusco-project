@@ -16,6 +16,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import Stack from '@mui/material/Stack';
 
 export default function Login() {
   const [creds, setCreds] = useState({ username: "", password: "" });
@@ -40,15 +41,25 @@ export default function Login() {
 
   return (
     <>
+     <Stack direction="row" sx={styles.adminBtn} spacing={2}>
+     <Button
+        onClick={() => {
+          navigate("/trackYourApplication");
+        }}
+        
+        variant="text"
+      >
+        Track Your Application
+      </Button>
       <Button
         onClick={() => {
           navigate("/adminLogin");
         }}
-        sx={styles.adminBtn}
         variant="text"
       >
         Admin
       </Button>
+      </Stack>
       <Container maxWidth="xl" sx={styles.container}>
         <Paper sx={styles.paper} variant="outlined">
           <img

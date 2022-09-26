@@ -10,7 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function OtpPopup(props) {
+export default function TrackOtpPopup(props) {
 
   const handleClose = () => {
     props.setOpen(false);
@@ -24,20 +24,7 @@ export default function OtpPopup(props) {
         <DialogTitle>OTP Verification</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please enter OTP we've sent you on +91-{props.phone}
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="OTP"
-            type="number"
-            fullWidth
-            variant="standard"
-          />
-
-        <DialogContentText sx={{mt:"25px"}}>
-        Please enter OTP we've sent you on {props.email}
+            Please enter OTP we've sent you on +91-xxxxxxxxx or abx@xyz.com
           </DialogContentText>
           <TextField
             autoFocus

@@ -3,6 +3,9 @@ import { styles } from './styles';
 import Iframe from 'react-iframe';
 
 import OtpPopup from './components/otpPopup';
+import PrivacyPolicyPopup from './components/privacyPolicyPopup';
+import TncPopup from './components/tncPopup';
+
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -29,6 +32,10 @@ import { FormLabel } from '@mui/material';
 export default function ApplicationForm() {
 
   const divForScroll = useRef(null)
+
+  const [privacyPolicyOpen, setPrivacyPolicyOpen] = useState(false)
+  const [open, setOpen] = useState(false);  //for otp popup
+  const [tncPopupOpen, setTncPopupOpen] = useState(false)
 
   const [creds, setCreds] = useState({salutation:"", areaPa:"",undefined:"",doctype1:"", doc1No:"",doc2No:"",doc3No:"",Fname: '',Lname:"",mobile:"",email:"",cmobile:"",cemail:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",zoneBa:"",localityBa:"",areaBa:"",qty:"",remarks:"" });
 
@@ -74,12 +81,15 @@ export default function ApplicationForm() {
     setOpen(true)
   }
 
-  const [open, setOpen] = useState(false);  //for otp popup
+  
   
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 
   return (
     <>
+    <PrivacyPolicyPopup open={privacyPolicyOpen} setOpen={setPrivacyPolicyOpen}
+    />
+    <TncPopup setOpen={setTncPopupOpen} open={tncPopupOpen} setBtn={setBtn}/>
         <div ref={divForScroll}></div>
         <Container maxWidth="xl" sx={styles.container}>
             <img  style={mediaQuery.matches?styles.imgLogoMobile:styles.imgLogo} src={require('../../assets/image/logo.png')} alt="" srcset="" />
@@ -96,7 +106,7 @@ export default function ApplicationForm() {
            <Box sx={styles.row}>
             <div style={mediaQuery.matches?styles.flex:styles}>
                 <FormControl size="small" sx={styles.inputFieldSm} fullWidth>
-                  <InputLabel id="salutation">{"salutation"}</InputLabel>
+                  <InputLabel id="salutation">{"Salutation"}</InputLabel>
                   <Select
                     labelId="salutation"
                     id="salutation"
@@ -177,7 +187,7 @@ export default function ApplicationForm() {
                 size="small"
                 error={creds.email !== creds.cemail}
                 id="cemail"
-                type="id"
+                type="text"
                 label="Confirm email id"
                 placeholder="Confirm email id"
                 value={creds.cemail || ''}
@@ -201,7 +211,7 @@ export default function ApplicationForm() {
             <Box sx={styles.inputField}></Box>   
            </Box>
            <Box sx={styles.row}>
-           <Typography sx={styles.info}>Privacy Policy goes here</Typography>
+           <Typography onClick={()=>{setPrivacyPolicyOpen(true)}} sx={styles.info}>Privacy Policy goes here</Typography>
            </Box>
            </Paper>
 
@@ -256,12 +266,10 @@ export default function ApplicationForm() {
             <input style={styles.inputBtn} type={"file"}></input>
             </Box>
             </Box>
-            </Paper>
-
-            <Paper variant="outlined" sx = {styles.fieldContainer}>
+           
            <Typography
                 sx={styles.signupText} >
-               Documents Details
+               {/* Documents Details */}
             </Typography>
             <Box sx={styles.row}>
               <FormControl size="small" sx={styles.inputField} fullWidth>
@@ -301,12 +309,10 @@ export default function ApplicationForm() {
             <input style={styles.inputBtn} type={"file"}></input>
             </Box>
             </Box>
-            </Paper>
-
-            <Paper variant="outlined" sx = {styles.fieldContainer}>
+        
            <Typography
                 sx={styles.signupText} >
-               Documents Details
+               {/* Documents Details */}
             </Typography>
             <Box sx={styles.row}>
               <FormControl size="small" sx={styles.inputField} fullWidth>
@@ -707,19 +713,18 @@ export default function ApplicationForm() {
 
 
 
-      <div style={{display:"flex",justifyContent:"start",width:"70%"}}>
+      <div onClick={()=>{setTncPopupOpen(true)}} style={{display:"flex",justifyContent:"start",width:"70%"}}>
           <FormGroup>
               <FormControlLabel control={<Checkbox 
-              onChange={()=>
-              {
-                if(btn==true){
-                  setBtn(false)
-                  }
-                else{
-                  setBtn(true)
-                }
-              }
-              }/>}
+              checked={btn}
+              // onChange={()=>
+              // {if(btn==true){
+              //     setBtn(false)
+              //     }
+              //   else{
+              //     setBtn(true)
+              //   }}}
+              />}
 
               label="Terms and Conditions" />
             </FormGroup>
@@ -736,7 +741,7 @@ export default function ApplicationForm() {
       </IconButton>
         </Container>
        
-       <OtpPopup open={open} setOpen={setOpen}/> 
+       <OtpPopup phone={creds.mobile} email={creds.email} open={open} setOpen={setOpen}/> 
     </>
   )
 }

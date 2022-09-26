@@ -12,6 +12,7 @@ import HodDashboard from "./screens/hodDashboard";
 import DoorToDoor from "./screens/doorToDoor";
 import DoorToDoorVerification from "./screens/doorToDoorVerification";
 import SendSms from "./screens/sendSms";
+import TrackYourApplication from "./screens/trackYourApplication";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
             <Route
               path="/sendSms"
               element={<SendSms/>}
+            />
+            <Route
+              path="/trackYourApplication"
+              element={<TrackYourApplication/>}
             />
           </Routes>
         </Router>
