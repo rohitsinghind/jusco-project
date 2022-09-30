@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const { urlencoded } = require("body-parser");
+const path = require("path");
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config({ path: "config.env" });
+  }
 
 const app = express();
 const db = new PrismaClient();
@@ -90,6 +94,13 @@ app.post("/registerUser", async (req, res) => {
   // res.json(req.body);
 });
 
-app.listen(3001, () => {
-  console.log("localhost:3001");
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+  });
+
+
+app.listen(process.env.PORT, () => {
+  console.log(`localhost:${process.env.PORT}`);
 });
