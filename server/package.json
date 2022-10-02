@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js", 
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install"
   },
   "author": "ani",
   "license": "ISC",
