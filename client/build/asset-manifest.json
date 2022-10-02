@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/jusco-project.epizy.com/static/css/main.90575c7b.css",
-    "main.js": "/jusco-project.epizy.com/static/js/main.2bd7fe96.js",
-    "static/js/787.1754b373.chunk.js": "/jusco-project.epizy.com/static/js/787.1754b373.chunk.js",
-    "static/media/logo.png": "/jusco-project.epizy.com/static/media/logo.9a921314b69b5e1aad7e.png",
-    "index.html": "/jusco-project.epizy.com/index.html",
-    "main.90575c7b.css.map": "/jusco-project.epizy.com/static/css/main.90575c7b.css.map",
-    "main.2bd7fe96.js.map": "/jusco-project.epizy.com/static/js/main.2bd7fe96.js.map",
-    "787.1754b373.chunk.js.map": "/jusco-project.epizy.com/static/js/787.1754b373.chunk.js.map"
+    "main.css": "/static/css/main.0bb49317.css",
+    "main.js": "/static/js/main.8a532534.js",
+    "static/js/787.1754b373.chunk.js": "/static/js/787.1754b373.chunk.js",
+    "static/media/logo.png": "/static/media/logo.9a921314b69b5e1aad7e.png",
+    "index.html": "/index.html",
+    "main.0bb49317.css.map": "/static/css/main.0bb49317.css.map",
+    "main.8a532534.js.map": "/static/js/main.8a532534.js.map",
+    "787.1754b373.chunk.js.map": "/static/js/787.1754b373.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90575c7b.css",
-    "static/js/main.2bd7fe96.js"
+    "static/css/main.0bb49317.css",
+    "static/js/main.8a532534.js"
   ]
 }
