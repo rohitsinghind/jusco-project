@@ -76,7 +76,7 @@ export default function ApplicationForm() {
     e.preventDefault();
     axios
     .post("http://localhost:3001/registerUser", {
-      salutation,Fname,Lname,mobile,email,designation,doctype1,doc1No,doctype2,doc2No,doctype3,doc3No,nameBa,streetHouseNoBa,zoneBa,areaBa,localityBa,postalCodeBa,cityBa,regionBa,countryBa,namePa,streetHouseNoPa,postalCodePa,cityPa,regionPa,countryPa,zonePa,areaPa,localityPa,
+      salutation:creds.salutation,Fname:creds.Fname,Lname:creds.Lname,mobile:creds.mobile,email:creds.email,designation:creds.designation,doctype1,doc1No:creds.doc1No,doctype2,doc2No:creds.doc2No,doctype3,doc3No:creds.doc3No,nameBa:creds.nameBa,streetHouseNoBa:creds.streetHouseNoBa,zoneBa:creds.zoneBa,areaBa,localityBa:creds.localityBa,postalCodeBa:creds.postalCodeBa,cityBa:creds.cityBa,regionBa:creds.regionBa,countryBa:creds.countryBa,namePa:val.namePa,streetHouseNoPa:val.streetHouseNoPa,postalCodePa:val.postalCodePa,cityPa:val.cityPa,regionPa:val.regionPa,countryPa:val.countryPa,zonePa:val.zonePa,areaPa,localityPa:val.localityPa,
     },
     {
       headers: {
