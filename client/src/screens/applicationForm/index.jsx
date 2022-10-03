@@ -1,6 +1,6 @@
 import React,{useState, useRef} from 'react'
 import { styles } from './styles';
-import Iframe from 'react-iframe';
+import axios from "axios";
 
 import OtpPopup from './components/otpPopup';
 import PrivacyPolicyPopup from './components/privacyPolicyPopup';
@@ -37,12 +37,21 @@ export default function ApplicationForm() {
   const [open, setOpen] = useState(false);  //for otp popup
   const [tncPopupOpen, setTncPopupOpen] = useState(false)
 
-  const [creds, setCreds] = useState({salutation:"", areaPa:"",undefined:"",doctype1:"", doc1No:"",doc2No:"",doc3No:"",Fname: '',Lname:"",mobile:"",email:"",cmobile:"",cemail:"",designation:"",gstin:"", password: '',nameBa:"",streetHouseNoBa:"",regionBa:"",postalCodeBa:"",cityBa:"",countryBa:"",zoneBa:"",localityBa:"",areaBa:"",qty:"",remarks:"" });
+  const [salutation, setSalutaion] = useState("")
+  const [doctype1, setDoctype1] = useState("")
+  const [doctype2, setDoctype2] = useState("")
+  const [doctype3, setDoctype3] = useState("")
+  const [areaBa, setAreaBa] = useState("")
+  const [areaPa, setAreaPa] = useState("")
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [creds, setCreds] = useState({
+    Fname: "", Lname: "", mobile: "", cmobile: "", email: "", cemail: "", designation: "", doc1No: "", doc2No: "", doc3No: "", nameBa: "", streetHouseNoBa: "", zoneBa: "", localityBa: "", postalCodeBa: "", cityBa: "Jamshedpur", regionBa: "Jharkhand", countryBa: "India", qty: "", remarks: "",
+  });
 
-  const [val,setVal] = useState({namePa:"",streetHouseNoPa:"",postalCodePa:"",cityPa:"",regionPa:"",countryPa:"",areaPa:"", zonePa:"", localityPa:""})
-  
+  const [val,setVal] = useState({
+    namePa: "", streetHouseNoPa: "", postalCodePa: "", cityPa: "Jamshedpur", regionPa: "Jharkhand", countryPa: "India", zonePa: "", localityPa: "",
+  })
+
   const [btn,setBtn] = useState(true)
 
   const handleChange = (key) => {
@@ -55,34 +64,29 @@ export default function ApplicationForm() {
     setVal({ ...val, [key.target.id]: key.target.value });
   };
 
-
   const matchValue =(key)=>{
     key.preventDefault();
     setVal({
-    namePa:creds.nameBa,
-    streetHouseNoPa:creds.streetHouseNoBa,
-    postalCodePa:creds.postalCodeBa,
-    cityPa:creds.cityBa,
-    regionPa:creds.regionBa,
-    countryPa:creds.countryBa,
-    areaPa:creds.areaBa,
-    zonePa:creds.zoneBa,
-    localityPa:creds.localityBa
+    namePa:creds.nameBa, streetHouseNoPa:creds.streetHouseNoBa, postalCodePa:creds.postalCodeBa, cityPa:creds.cityBa, regionPa:creds.regionBa, countryPa:creds.countryBa, areaPa:creds.areaBa, zonePa:creds.zoneBa, localityPa:creds.localityBa
   })
+  setAreaPa(areaBa)
   }
-
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword)
-  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    axios
+    .post("http://localhost:3001/registerUser", {
+      salutation,Fname,Lname,mobile,email,designation,doctype1,doc1No,doctype2,doc2No,doctype3,doc3No,nameBa,streetHouseNoBa,zoneBa,areaBa,localityBa,postalCodeBa,cityBa,regionBa,countryBa,namePa,streetHouseNoPa,postalCodePa,cityPa,regionPa,countryPa,zonePa,areaPa,localityPa,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => alert(res.data));
     setOpen(true)
   }
 
-  
-  
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 
   return (
@@ -110,9 +114,10 @@ export default function ApplicationForm() {
                   <Select
                     labelId="salutation"
                     id="salutation"
-                    value={creds.salutation || ""}
+                    value={salutation}
                     label="Salutation"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      setSalutaion(e.target.value)}}
                   >
                     <MenuItem value={"Mr"}>Mr.</MenuItem>
                     <MenuItem value={"Miss"}>Miss</MenuItem>
@@ -236,9 +241,10 @@ export default function ApplicationForm() {
             <Select
               labelId="Document"
               id="Document"
-              value={creds.doctype1 || ""}
+              value={doctype1}
               label="Documet Type"
-              onChange={handleChange}
+              onChange={(e) => {
+                setDoctype1(e.target.value)}}
             >
               <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
               <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
@@ -277,9 +283,10 @@ export default function ApplicationForm() {
             <Select
               labelId="Document"
               id="Document"
-              value={creds.undefined || ""}
+              value={doctype2}
               label="Documet Type"
-              onChange={handleChange}
+              onChange={(e) => {
+                setDoctype2(e.target.value)}}
             >
               <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
               <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
@@ -320,9 +327,10 @@ export default function ApplicationForm() {
             <Select
               labelId="Document"
               id="Document"
-              value={creds.undefined || ""}
+              value={doctype3}
               label="Documet Type"
-              onChange={handleChange}
+              onChange={(e) => {
+                setDoctype3(e.target.value)}}
             >
               <MenuItem value={"GSTIN"}>GSTIN</MenuItem>
               <MenuItem value={"Vendor ID Card"}>Vendor ID Card</MenuItem>
@@ -403,9 +411,10 @@ export default function ApplicationForm() {
             <Select
               labelId="areaBa"
               id="areaBa"
-              value={creds.undefined || ""}
+              value={areaBa}
               label="Area"
-              onChange={handleChange}
+              onChange={(e) => {
+                setAreaBa(e.target.value)}}
             >
               <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
               <MenuItem value={"KSD"}>Kashidih</MenuItem>
@@ -546,9 +555,10 @@ export default function ApplicationForm() {
         <Select
           labelId="Area"
           id="areaPa"
-          value={creds.areaPa || ""}
-          label="Age"
-          onChange={handleChange2}
+          value={areaPa}
+          label="Agea"
+          onChange={(e) => {
+            setAreaPa(e.target.value)}}
         >
           <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
           <MenuItem value={"KSD"}>Kashidih</MenuItem>
