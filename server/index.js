@@ -3,9 +3,14 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const { urlencoded } = require("body-parser");
 const path = require("path");
+
+const { createApplication } = require("./routes/createApplication");
+const { createUser } = require("./routes/userCreation");
+const { applicationStatus } = require("./routes/applicationstatus");
+
 if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config({ path: "config.env" });
-  }
+  require("dotenv").config({ path: "config.env" });
+}
 
 const app = express();
 const db = new PrismaClient();
@@ -13,94 +18,51 @@ const db = new PrismaClient();
 app.use(express.json());
 app.use(cors({ "access-control-allow-origin": "*" }));
 app.use(urlencoded({ encodeURI: true }));
-
-app.post("/registerUser", async (req, res) => {
-  console.log("/RegisterUser");
-
-  const {
-    salutation,
-    areaPa,
-    undefined,
-    doctype1,
-    doc1No,
-    doc2No,
-    doc3No,
-    Fname,
-    Lname,
-    mobile,
-    email,
-    cmobile,
-    cemail,
-    designation,
-    gstin,
-    password,
-    nameBa,
-    streetHouseNoBa,
-    regionBa,
-    postalCodeBa,
-    cityBa,
-    countryBa,
-    zoneBa,
-    localityBa,
-    areaBa,
-    qty,
-    remarks,
-  } = req.body;
-  console.log(req.body);
-
-  let data = await db.customer.create({
-    data: {
-      id: `${Fname}/${mobile}/${Lname}`,
-      application_no: `${mobile}${Fname}`,
-      customer_id: `${Lname}ID${mobile}++`,
-      status: "201",
-      salutation: salutation || "Mr",
-      first_name: Fname,
-      last_name: Lname,
-      mobile_no: mobile,
-      email_id: email,
-      designation: designation || "Owner",
-      document_type_1: "Aadhar",
-      document_no_1: "1231 4323 3343 0093",
-      document_file_name_1: "n%$jasdhjhasdhls.ksi",
-      document_type_2: "",
-      document_no_2: "",
-      document_file_name_2: "",
-      document_type_3: "",
-      document_no_3: "",
-      document_file_name_3: "",
-      billing_estb_name: `${Fname} ${Lname}`,
-      billing_street: streetHouseNoBa || "Not Defined",
-      billing_zone: zoneBa || "Not Defined",
-      billing_area: areaBa || "Not Defined",
-      billing_locality: localityBa || "Not Defined",
-      billing_postal_code: postalCodeBa || "Not Defined",
-      billing_city: cityBa || "Not Defined",
-      billing_region: regionBa || "Not Defined",
-      billing_country: countryBa || "India",
-      pickup_estb_name: `${Fname} ${Lname}`,
-      pickup_street: streetHouseNoBa || "Not Defined",
-      pickup_zone: zoneBa || "Not defined",
-      pickup_area: areaPa || "Not defined",
-      pickup_locality: localityBa || "Not defined",
-      pickup_postal_code: postalCodeBa || "Not Defined",
-      pickup_city: cityBa || "Not Defined",
-      pickup_region: regionBa || "Not Defined",
-      pickup_country: countryBa || "India",
-      daily_wastage: qty || "Not Defined",
-    },
-  });
-  res.send(`Application Added For ${Fname}`);
-  // res.json(req.body);
-});
-
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
-  });
+//This is for registration of application of user
+app.post("/createApplication", async (req, res) => {
+  const response = createApplication(req.body);
+  console.log("/createApplication");
+  console.log(req.body);
+  res.send(response);
+});
 
+//user to see his application status
+app.post("/applicationDetails", (req, res) => {
+  console.log("/applicationDetails");
+  const response = applicationStatus(req.body);
+  console.log(response);
+  res.send(response);
+});
 
-app.listen(process.env.PORT, () => {
+//To send all applicant information to client
+app.post("/getApplications", (req, res) => {
+  console.log("/getApplications");
+  const applications = getAllApplication(req.body);
+  console.log(applications);
+  res.send(applications);
+});
+
+//For Creating new user
+app.post("/createUser", async (req, res) => {
+  console.log("creating User");
+  const usrDetails = createUser(req.body);
+  console.log("User Created");
+  console.log("Sending response....");
+  res.send(usrDetails);
+});
+
+// This is for login of user
+app.post("/login", async (req, res) => {
+  const user = loginUser(req.body);
+  console.log(user.message);
+  if (user.flag) {
+    console.log(user.username, " user loggedin");
+  }
+  res.send(user);
+});
+
+app.listen(process.env.PORT || 3001, () => {
   console.log(`localhost:${process.env.PORT}`);
 });

@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model customer {
   id                   String @id @unique
   application_no       String
@@ -49,25 +50,4 @@ model customer {
   pickup_region        String
   pickup_country       String
   daily_wastage        String
-  remarks              String
-  auth                 String
-  application_status   String
-}
-
-model user {
-  username       String @unique
-  password       String
-  role           String
-  application_no String
-  id             String
-  entry_date     String
-  mod_date       String
-  mod_by         String
-  token          String @unique
-}
-
-model sms {
-  id   String @unique
-  flag String
-  sms  String
 }

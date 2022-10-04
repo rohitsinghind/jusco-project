@@ -1,15 +1,4 @@
 -- CreateTable
-CREATE TABLE `User` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `email` VARCHAR(191) NOT NULL,
-    `name` VARCHAR(191) NULL,
-
-    UNIQUE INDEX `User_email_key`(`email`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
 CREATE TABLE `customer` (
     `id` VARCHAR(191) NOT NULL,
     `application_no` VARCHAR(191) NOT NULL,
@@ -49,7 +38,33 @@ CREATE TABLE `customer` (
     `pickup_region` VARCHAR(191) NOT NULL,
     `pickup_country` VARCHAR(191) NOT NULL,
     `daily_wastage` VARCHAR(191) NOT NULL,
+    `remarks` VARCHAR(191) NOT NULL,
+    `auth` VARCHAR(191) NOT NULL,
+    `application_status` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `customer_id_key`(`id`),
     PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `user` (
+    `username` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
+    `role` VARCHAR(191) NOT NULL,
+    `application_no` VARCHAR(191) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `entry_date` VARCHAR(191) NOT NULL,
+    `mod_date` VARCHAR(191) NOT NULL,
+    `mod_by` VARCHAR(191) NOT NULL,
+
+    UNIQUE INDEX `user_username_key`(`username`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `sms` (
+    `id` VARCHAR(191) NOT NULL,
+    `flag` VARCHAR(191) NOT NULL,
+    `sms` VARCHAR(191) NOT NULL,
+
+    UNIQUE INDEX `sms_id_key`(`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
