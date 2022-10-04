@@ -31,9 +31,11 @@ app.post("/createApplication", async (req, res) => {
 });
 
 //user to see his application status
-app.post("/applicationDetails", (req, res) => {
+app.post("/applicationDetails",(req, res) => {
   console.log("/applicationDetails");
-  const response = applicationStatus(req.body);
+  console.log(req.body);
+
+  const response =applicationStatus(req.body);
   console.log(response);
   res.send(response);
 });
