@@ -66,3 +66,6 @@ app.post("/login", async (req, res) => {
 app.listen(process.env.PORT || 3001, () => {
   console.log(`localhost:${process.env.PORT}`);
 });
+
+
+//changing status of customer 
