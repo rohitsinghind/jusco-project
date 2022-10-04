@@ -8,7 +8,7 @@ function applicationStatus(id) {
     },
   });
 
-  if (!id) {
+  if (!application) {
     return { flag: false, message: "no application exists" };
   } else {
     return {

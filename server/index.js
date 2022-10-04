@@ -4,9 +4,12 @@ const { PrismaClient } = require("@prisma/client");
 const { urlencoded } = require("body-parser");
 const path = require("path");
 
+const { loginUser } = require("./routes/userLogin");
 const { createApplication } = require("./routes/createApplication");
 const { createUser } = require("./routes/userCreation");
 const { applicationStatus } = require("./routes/applicationstatus");
+const { changeStatus } = require("./routes/changeStatus");
+const { getAllApplication } = require("./routes/getAllapplications");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: "config.env" });
@@ -63,9 +66,15 @@ app.post("/login", async (req, res) => {
   res.send(user);
 });
 
+//changing status of customer
+app.post("/changeStatus", (req, res) => {
+  console.log("/changeStatus");
+  const { id, status, token } = req.body;
+  const response = changeStatus(id, status);
+  console.log(response);
+  res.send(response);
+});
+
 app.listen(process.env.PORT || 3001, () => {
   console.log(`localhost:${process.env.PORT}`);
 });
-
-
-//changing status of customer 

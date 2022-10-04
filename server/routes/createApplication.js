@@ -4,19 +4,8 @@ const db = new PrismaClient();
 
 function createApplication(usrData) {
   const dateTime = new Date();
+  console.log(usrData);
   const {
-    salutation,
-    areaPa,
-    undefined,
-    doctype1,
-    doc1No,
-    docFile1,
-    doctype2,
-    doc2No,
-    docFile2,
-    doctype3,
-    doc3No,
-    docFile3,
     Fname,
     Lname,
     mobile,

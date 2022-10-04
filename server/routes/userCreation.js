@@ -4,10 +4,10 @@ const { createTokens } = require("../auth/jwtToken");
 
 const db = new PrismaClient();
 
-function createUser(usrDetails) {
+async function createUser(usrDetails) {
   const dateTime = new Date();
   const { username, password, role, application_no, id, mod_by } = usrDetails;
-  const token = createTokens(username);
+  const token = await createTokens(username);
   bcrypt.hash(password, 15).then(async (hashPass) => {
     try {
       db.user.create({
