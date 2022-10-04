@@ -25,9 +25,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 
 //This is for registration of application of user
 app.post("/createApplication", async (req, res) => {
-  const response = createApplication(req.body);
+  const response = await createApplication(req.body);
   console.log("/createApplication");
-  console.log(req.body);
   res.send(response);
 });
 

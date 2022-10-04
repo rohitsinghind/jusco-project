@@ -108,8 +108,8 @@ export default function ApplicationForm() {
   const submitHandler = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/registerUser", {
-        salutation: creds.salutation,
+      .post("http://localhost:3001/createApplication", {
+        salutation: salutation,
         Fname: creds.Fname,
         Lname: creds.Lname,
         mobile: creds.mobile,
@@ -117,10 +117,13 @@ export default function ApplicationForm() {
         designation: creds.designation,
         doctype1,
         doc1No: creds.doc1No,
+        docFile1:"",
         doctype2,
         doc2No: creds.doc2No,
+        docFile2:"",
         doctype3,
         doc3No: creds.doc3No,
+        docFile3:"",
         nameBa: creds.nameBa,
         streetHouseNoBa: creds.streetHouseNoBa,
         zoneBa: creds.zoneBa,
@@ -139,8 +142,11 @@ export default function ApplicationForm() {
         zonePa: val.zonePa,
         areaPa,
         localityPa: val.localityPa,
+        qty:creds.qty,
+        remarks:creds.remarks,
       })
-      .then((res) => alert(res.data));
+      .then((res) => console.log(res.data));
+
     setOpen(true);
   };
 

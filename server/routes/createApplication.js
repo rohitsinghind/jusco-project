@@ -2,42 +2,48 @@ const { PrismaClient } = require("@prisma/client");
 
 const db = new PrismaClient();
 
-function createApplication(usrData) {
+async function createApplication(usrData) {
   const dateTime = new Date();
   console.log(usrData);
   const {
-    Fname,
-    Lname,
-    mobile,
-    email,
-    cmobile,
-    cemail,
-    designation,
-    gstin,
-    password,
-    nameBa,
-    streetHouseNoBa,
-    streetHouseNoPa,
-    regionBa,
-    postalCodeBa,
-    cityBa,
-    cityPa,
-    billing_estb_name,
-    regionPa,
-    countryBa,
-    countryPa,
-    zoneBa,
-    zonePa,
-    localityBa,
-    localityPa,
-    areaBa,
-    pickup_estb_name,
-    qty,
-    postalCodePa,
-    remarks,
+    salutation,
+        Fname,
+        Lname,
+        mobile,
+        email,
+        designation,
+        doctype1,
+        doc1No,
+        docFile1,
+        doctype2,
+        doc2No,
+        docFile2,
+        doctype3,
+        doc3No,
+        docFile3,
+        nameBa,
+        streetHouseNoBa,
+        zoneBa,
+        areaBa,
+        localityBa,
+        postalCodeBa,
+        cityBa,
+        regionBa,
+        countryBa,
+        namePa,
+        streetHouseNoPa,
+        postalCodePa,
+        cityPa,
+        regionPa,
+        countryPa,
+        zonePa,
+        areaPa,
+        localityPa,
+        qty,
+        remarks,
   } = usrData;
-  try {
-    db.customer.create({
+  try{
+    const as = await db.customer.create({
       data: {
         id: `${Fname}/${dateTime}/${email}` || "undefined",
         application_no: `200/${Fname[(0, 3)]}/${mobile[(0, 3)]}` || "undefined",
@@ -58,7 +64,7 @@ function createApplication(usrData) {
         document_type_3: doctype3 || "undefined",
         document_no_3: doc3No || "undefined",
         document_file_name_3: docFile3 || "undefined",
-        billing_estb_name: billing_estb_name || "undefined",
+        billing_estb_name: nameBa || "undefined",
         billing_street: streetHouseNoBa || "undefined",
         billing_zone: zoneBa || "undefined",
         billing_area: areaBa || "undefined",
@@ -67,7 +73,7 @@ function createApplication(usrData) {
         billing_city: cityBa || "undefined",
         billing_region: regionBa || "undefined",
         billing_country: countryBa || "undefined",
-        pickup_estb_name: pickup_estb_name || "undefined",
+        pickup_estb_name: namePa || "undefined",
         pickup_street: streetHouseNoPa || "undefined",
         pickup_zone: zonePa || "undefined",
         pickup_area: areaPa || "undefined",
@@ -86,10 +92,14 @@ function createApplication(usrData) {
       status: "success",
       message: `Application Created For User ${Fname}`,
       id: `${Fname}/${dateTime}/${email}`,
-    };
-  } catch (e) {
-    return { status: "failed", message: "No Application Created", error: e };
-  }
+    };}
+    catch(e){
+      return {
+        status: "Failed",
+        message: `No Application Created`,
+      }
+    }
+  
 }
 
 module.exports = { createApplication };
