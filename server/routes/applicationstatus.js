@@ -1,13 +1,14 @@
 const { PrismaClient } = require("@prisma/client");
 const db = new PrismaClient();
 
-function applicationStatus(id) {
-  const application = db.customer.findUnique({
+async function applicationStatus({ id }) {
+  console.log(id);
+  const application = await db.customer.findUnique({
     where: {
       id: id,
     },
   });
-
+  console.log(application);
   if (!application) {
     return { flag: false, message: "no application exists" };
   } else {

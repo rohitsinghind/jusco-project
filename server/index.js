@@ -31,25 +31,26 @@ app.post("/createApplication", async (req, res) => {
 });
 
 //user to see his application status
-app.post("/applicationDetails", (req, res) => {
+app.post("/applicationDetails", async (req, res) => {
   console.log("/applicationDetails");
-  const response = applicationStatus(req.body);
+  const response = await applicationStatus(req.body);
   console.log(response);
   res.send(response);
 });
 
 //To send all applicant information to client
-app.post("/getApplications", (req, res) => {
+app.post("/getApplications", async (req, res) => {
   console.log("/getApplications");
-  const applications = getAllApplication(req.body);
-  console.log(applications);
+  const applications = await getAllApplication(req.body);
+  // console.log(applications);
   res.send(applications);
 });
 
 //For Creating new user
 app.post("/createUser", async (req, res) => {
   console.log("creating User");
-  const usrDetails = createUser(req.body);
+  const usrDetails = await createUser(req.body);
+  console.log(usrDetails);
   console.log("User Created");
   console.log("Sending response....");
   res.send(usrDetails);
@@ -57,7 +58,8 @@ app.post("/createUser", async (req, res) => {
 
 // This is for login of user
 app.post("/login", async (req, res) => {
-  const user = loginUser(req.body);
+  const user = await loginUser(req.body);
+  console.log(user);
   console.log(user.message);
   if (user.flag) {
     console.log(user.username, " user loggedin");
@@ -66,10 +68,10 @@ app.post("/login", async (req, res) => {
 });
 
 //changing status of customer
-app.post("/changeStatus", (req, res) => {
+app.post("/changeStatus", async (req, res) => {
   console.log("/changeStatus");
-  const { id, status, token } = req.body;
-  const response = changeStatus(id, status);
+  const { applicantId, newStatus, token } = req.body;
+  const response = await changeStatus(applicantId, newStatus, token);
   console.log(response);
   res.send(response);
 });

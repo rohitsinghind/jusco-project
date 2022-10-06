@@ -13,16 +13,17 @@ async function changeStatus(applicantId, newStatus, token) {
   } else if (usr.role == "hod" || usr.role == "depot_manager") {
     const application = await db.customer.update({
       where: {
-        id: id,
+        id: applicantId,
       },
       data: {
         status: newStatus,
+        application_status: newStatus,
       },
     });
 
     return {
       flag: true,
-      message: "Success",
+      message: `Success, status changed to ${newStatus}`,
     };
   } else {
     return {
