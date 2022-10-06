@@ -20,7 +20,9 @@ const steps = [
   "Customer NO. Generated",
 ];
 
-export default function CustomerDashboard() {
+export default function CustomerDashboard(props) {
+
+  console.log(props.userData)
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -108,7 +110,7 @@ export default function CustomerDashboard() {
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Application No.</Typography>
                 <Typography sx={styles.fieldData}>
-                  APPL/2022-23/0073
+                  {props.userData?.application_no}
                 </Typography>
               </Box>
             </div>
@@ -116,7 +118,7 @@ export default function CustomerDashboard() {
               <Typography sx={styles.dashboardText}></Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Application Status</Typography>
-                <Typography sx={styles.fieldData}>Pending</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.application_status}</Typography>
               </Box>
             </div>
           </Box>
@@ -128,24 +130,24 @@ export default function CustomerDashboard() {
               <Typography sx={styles.dashboardText}>Personal Info</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.salutation+". "+props.userData?.first_name+" "+props.userData?.last_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Mobile Number</Typography>
-                <Typography sx={styles.fieldData}>9876543210</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.mobile_no}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Email</Typography>
                 <Typography sx={styles.fieldData}>
-                  rohitkumar@mail.com
+                {props.userData?.email_id}
                 </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Designation</Typography>
-                <Typography sx={styles.fieldData}>Sr. Manager</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.designation}</Typography>
               </Box>
             </div>
             <div>
@@ -153,8 +155,8 @@ export default function CustomerDashboard() {
                 Document Details
               </Typography>
               <Box sx={styles.detailsRow}>
-                <Typography sx={styles.field}>GSTIN</Typography>
-                <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
+                <Typography sx={styles.field}>{props.userData?.document_type_1}</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.document_no_1}</Typography>
               </Box>
               <Button variant="contained">view uploaded document</Button>
             </div>
@@ -167,31 +169,31 @@ export default function CustomerDashboard() {
               <Typography sx={styles.dashboardText}>Billing Address</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Establishment Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_estb_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_street}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_city}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_region}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>India</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_country}</Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>831001</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.billing_postal_code}</Typography>
               </Box>
             </div>
 
@@ -201,31 +203,31 @@ export default function CustomerDashboard() {
               </Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Establishment Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_estb_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_street}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_city}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_region}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>India</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_country}</Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>831001</Typography>
+                <Typography sx={styles.fieldData}>{props.userData?.pickup_postal_code}</Typography>
               </Box>
             </div>
           </Box>

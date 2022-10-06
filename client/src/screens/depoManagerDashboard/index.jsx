@@ -1,4 +1,5 @@
-import * as React from "react";
+import React,{useState, useEffect} from "react";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import { Container } from "@mui/material";
@@ -9,7 +10,6 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import ApplicationTable from "./components/ApplicationTable";
-import { useState } from "react";
 import AllData from "./TableData/allData";
 
 export default function DepoManagerDashboard(props) {
@@ -22,6 +22,7 @@ export default function DepoManagerDashboard(props) {
   );
 
   const [tableName, setTableName] = useState("Applications");
+  const [applicants, setApplicants] = useState([])
 
   function handleClickPop(e) {
     setTableName(e.target.innerText);
@@ -33,6 +34,19 @@ export default function DepoManagerDashboard(props) {
     );
     console.log(e.target.id);
   }
+
+  const fetchApplicants = async (e) => {
+    axios
+      .post("http://localhost:3001/getApplications", {
+        token:localStorage.getItem("adminToken")
+      })
+      .then((res) => setApplicants(res.data?.data));
+  };
+
+  useEffect(() => {
+    fetchApplicants();
+  }, [])
+  
 
   return (
     <div>

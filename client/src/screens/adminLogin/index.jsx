@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { styles } from "./styles";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +26,8 @@ export default function AdminLogin() {
   const [checked, setChecked] = useState(false);
   const [link, setLink] = useState("/depoManagerDashboard");
 
+  let navigate = useNavigate();
+
   function handleRadio() {
     if (checked) {
       setLink("/depoManagerDashboard");
@@ -48,9 +51,15 @@ export default function AdminLogin() {
 
   const loginHandler = async (e) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:3001/login",
+        creds
+      )
+      .then((res) => localStorage.setItem("adminToken",res.data?.token))
+       navigate(link);
   };
 
-  let navigate = useNavigate();
+  
 
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 
@@ -119,9 +128,7 @@ export default function AdminLogin() {
           <Button
             variant="contained"
             sx={styles.loginBtn}
-            onClick={() => {
-              navigate(link);
-            }}
+            onClick={loginHandler}
           >
             Log in
           </Button>
