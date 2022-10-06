@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://jusco_bulk_gen:3y?)%wuuEPOEuuCeDo@localhost:3306/jusco_bulk_gen"
+  url      = "mysql://jusco_bulk_gen:3y%3F%29%25wuuEPOEuuCeDo@http://jusco.rudrayati.in:3306/jusco_bulk_gen"
 }
 
 model customer {
