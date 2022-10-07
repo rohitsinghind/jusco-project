@@ -43,9 +43,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 //   return { name, mobile, email, area, gstNo,isReturn,expiration };
 // }
 
-export default function ApplicationTable({ data, actionLink }) {
+export default function ApplicationTable({ data, actionLink, setApplicantData}) {
   let navigate = useNavigate();
-  console.log(actionLink);
+  // console.log(data)
+  // console.log(actionLink);
   return (
     <>
       <TableContainer component={Paper}>
@@ -67,20 +68,21 @@ export default function ApplicationTable({ data, actionLink }) {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <StyledTableRow key={row.name}>
+              <StyledTableRow key={row.application_no}>
+                <StyledTableCell align="right"></StyledTableCell>
                 <StyledTableCell component="th" scope="row">
-                  {row.name}
+                  {row?.application_no}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.mobile}</StyledTableCell>
-                <StyledTableCell align="right">{row.email}</StyledTableCell>
-                <StyledTableCell align="right">{row.area}</StyledTableCell>
-                <StyledTableCell align="right">{row.gstNo}</StyledTableCell>
+                <StyledTableCell align="right"> {row?.salutation+". "+row?.first_name+" "+row?.last_name}</StyledTableCell>
+                <StyledTableCell align="right">{row?.mobile_no}</StyledTableCell>
+                <StyledTableCell align="right">{row?.billing_area}</StyledTableCell>
                 <StyledTableCell align="right">
                   {row.expiration}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   <Button
                     onClick={() => {
+                      setApplicantData(row)
                       navigate(actionLink);
                     }}
                     variant="text"

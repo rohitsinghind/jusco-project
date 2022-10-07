@@ -13,16 +13,22 @@ import ApplicationTable from "./components/ApplicationTable";
 import AllData from "./TableData/allData";
 
 export default function DepoManagerDashboard(props) {
+
   const mediaQuery = window.matchMedia("(max-width: 650px)");
+
+  const [applicants, setApplicants] = useState([])
+  
   const [Table, setTable] = useState(
     <ApplicationTable
-      data={AllData.application}
+      data={applicants}
       actionLink={props.link || "/applicationDetails"}
     />
   );
 
+  // console.log(applicants)
+
   const [tableName, setTableName] = useState("Applications");
-  const [applicants, setApplicants] = useState([])
+ 
 
   function handleClickPop(e) {
     setTableName(e.target.innerText);
@@ -219,7 +225,13 @@ export default function DepoManagerDashboard(props) {
             )}
           </PopupState>
         </Box>
-        <Box sx={styles.table}>{Table}</Box>
+        <Box sx={styles.table}>
+        <ApplicationTable
+              data={applicants}
+              setApplicantData={props.setApplicantData}
+              actionLink={props.link || "/applicationDetails"}
+            />
+          </Box>
       </Container>
     </div>
   );

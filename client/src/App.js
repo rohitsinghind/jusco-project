@@ -16,6 +16,7 @@ import TrackYourApplication from "./screens/trackYourApplication";
 
 function App() {
   const [userData, setUserData] = useState("")
+  const [applicantData, setApplicantData] = useState("")
   return (
     <>
       <div style={{ background: "#f0f2f7" }}>
@@ -27,11 +28,11 @@ function App() {
             <Route path="/adminLogin" element={<AdminLogin />} />
             <Route
               path="/depoManagerDashboard"
-              element={<DepoManagerDashboard />}
+              element={<DepoManagerDashboard setApplicantData={setApplicantData}/>}
             />
             <Route
               path="/applicationDetails"
-              element={<ApplicationDetails />}
+              element={<ApplicationDetails applicantData={applicantData}/>}
             />
             <Route
               path="/applicationStatus"

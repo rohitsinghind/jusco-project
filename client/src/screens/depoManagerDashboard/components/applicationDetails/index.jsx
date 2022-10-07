@@ -19,7 +19,10 @@ import RadioGroup from "@mui/material/RadioGroup";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Checkbox, FormLabel } from "@mui/material";
 import UsrSign from "../signaturePad";
-export default function ApplicationDetails() {
+export default function ApplicationDetails({applicantData}) {
+
+  console.log(applicantData)
+
   const mediaQuery = window.matchMedia("(max-width: 650px)");
 
   const [creds, setCreds] = useState({
@@ -61,31 +64,31 @@ export default function ApplicationDetails() {
               <Typography sx={styles.dashboardText}>Personal Info</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.salutation+". "+applicantData.first_name+" "+applicantData.last_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Mobile Number</Typography>
-                <Typography sx={styles.fieldData}>9876543210</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.mobile_no}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Email</Typography>
                 <Typography sx={styles.fieldData}>
-                  rohitkumar@mail.com
+                {applicantData.email_id}
                 </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Designation</Typography>
-                <Typography sx={styles.fieldData}>Sr. Manager</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.designation}</Typography>
               </Box>
             </div>
             <div>
               <Typography sx={styles.dashboardText}>GSTIN Details</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>GSTIN</Typography>
-                <Typography sx={styles.fieldData}>20ABCD890J1KZW</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.document_no_1}</Typography>
               </Box>
             </div>
           </Box>
@@ -97,31 +100,31 @@ export default function ApplicationDetails() {
               <Typography sx={styles.dashboardText}>Billing Address</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_estb_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_street}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_city}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_region}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>India</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_country}</Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>831001</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.billing_postal_code}</Typography>
               </Box>
             </div>
 
@@ -129,31 +132,31 @@ export default function ApplicationDetails() {
               <Typography sx={styles.dashboardText}>Pickup Address</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>Mr. Rohit Kumar</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_estb_name}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>L-Road, Bistupur</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_street}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>Jamshedpur</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_city}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>Jharkhand</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_region}</Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>India</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_country}</Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>831001</Typography>
+                <Typography sx={styles.fieldData}>{applicantData.pickup_postal_code}</Typography>
               </Box>
             </div>
           </Box>
