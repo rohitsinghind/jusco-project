@@ -86,6 +86,11 @@ async function createApplication(usrData) {
         remarks: remarks || "undefined",
         auth: "undefined",
         application_status: "started",
+        freq :"Undefined",
+        category :"undefined",
+        mobileAck :"Undefiend",
+        area: "Undefined",
+        rate: "undefined"
       },
     });
     return {

@@ -80,8 +80,8 @@ app.post("/changeStatus", async (req, res) => {
 //Sending Application to HOD
 app.post("/sendToHod", async (req, res) => {
   console.log("/sendToHod");
-  const { applicantId, token } = req.body;
-  const response = await sendToHod(applicantId, token);
+ 
+  const response = await sendToHod(req.body);
   console.log(response);
   res.send(response);
 });

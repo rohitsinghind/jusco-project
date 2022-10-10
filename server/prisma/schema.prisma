@@ -11,6 +11,7 @@ datasource db {
 }
 
 model customer {
+
   id                   String @id @unique
   application_no       String
   customer_id          String
@@ -52,6 +53,11 @@ model customer {
   remarks              String
   auth                 String
   application_status   String
+    freq String
+  category String
+  mobileAck String
+  area String
+  rate String
 }
 
 model user {
