@@ -55,7 +55,7 @@ export default function AdminLogin() {
       localStorage.setItem("adminToken", res.data?.token);
       console.log(res.data);
 
-      {res.data?.flag ? navigate(res.data?.data?.role == "hod"?"/hodDashboard":res.data?.data?.role == "depot_manager"?"/depoManagerDashboard":"/accounts") : alert(res.data?.message)}
+      {res.data?.flag ? navigate(res.data?.data?.role == "hod"?"/hodDashboard":res.data?.data?.role == "depot_manager"?"/depoManagerDashboard":"/AccountManagerDashboard") : alert(res.data?.message)}
     });
   };
 

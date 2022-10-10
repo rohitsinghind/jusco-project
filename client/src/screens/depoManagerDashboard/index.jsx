@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import ApplicationTable from "./components/ApplicationTable";
-import AllData from "./TableData/allData";
+// import AllData from "./TableData/allData";
 
 export default function DepoManagerDashboard(props) {
 
@@ -34,7 +34,7 @@ export default function DepoManagerDashboard(props) {
     setTableName(e.target.innerText);
     setTable(
       <ApplicationTable
-        data={AllData[e.target.id]}
+        // data={AllData[e.target.id]}
         actionLink={props.link || "/applicationDetails"}
       />
     );

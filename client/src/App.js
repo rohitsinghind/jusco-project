@@ -13,6 +13,9 @@ import DoorToDoor from "./screens/doorToDoor";
 import DoorToDoorVerification from "./screens/doorToDoorVerification";
 import SendSms from "./screens/sendSms";
 import TrackYourApplication from "./screens/trackYourApplication";
+import HodApplicationDetails from "./screens/hodDashboard/components/applicationDetails";
+import AccountManagerDashboard from "./screens/accountManagerDashboard";
+import AccountsApplicationDetails from "./screens/accountManagerDashboard/components/applicationDetails";
 
 function App() {
   const [userData, setUserData] = useState("")
@@ -33,6 +36,18 @@ function App() {
             <Route
               path="/applicationDetails"
               element={<ApplicationDetails applicantData={applicantData}/>}
+            />
+            <Route
+              path="/hodApplicationDetails"
+              element={<HodApplicationDetails applicantData={applicantData}/>}
+            />
+            <Route
+              path="/accountsApplicationDetails"
+              element={<AccountsApplicationDetails applicantData={applicantData}/>}
+            />
+            <Route
+              path="/AccountManagerDashboard"
+              element={<AccountManagerDashboard setApplicantData={setApplicantData}/>}
             />
             <Route
               path="/applicationStatus"

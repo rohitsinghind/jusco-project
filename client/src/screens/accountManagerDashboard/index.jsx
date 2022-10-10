@@ -11,7 +11,9 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import ApplicationTable from "./components/ApplicationTable";
 // import AllData from "./TableData/allData";
-export default function HodDashboard(props) {
+
+export default function AccountManagerDashboard(props) {
+
   const mediaQuery = window.matchMedia("(max-width: 650px)");
 
   const [applicants, setApplicants] = useState([])
@@ -23,7 +25,7 @@ export default function HodDashboard(props) {
     />
   );
 
-  // console.log(applicants)
+  console.log(applicants)
 
   const [tableName, setTableName] = useState("Applications");
  
@@ -227,7 +229,7 @@ export default function HodDashboard(props) {
         <ApplicationTable
               data={applicants}
               setApplicantData={props.setApplicantData}
-              actionLink={props.link || "/hodApplicationDetails"}
+              actionLink={props.link || "/accountsApplicationDetails"}
             />
           </Box>
       </Container>
