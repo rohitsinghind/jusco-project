@@ -10,6 +10,7 @@ const { createUser } = require("./routes/userCreation");
 const { applicationStatus } = require("./routes/applicationstatus");
 const { changeStatus } = require("./routes/changeStatus");
 const { getAllApplication } = require("./routes/getAllapplications");
+const { sendToHod } = require("./routes/sentToHod");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: "config.env" });
@@ -72,6 +73,15 @@ app.post("/changeStatus", async (req, res) => {
   console.log("/changeStatus");
   const { applicantId, newStatus, token } = req.body;
   const response = await changeStatus(applicantId, newStatus, token);
+  console.log(response);
+  res.send(response);
+});
+
+//Sending Application to HOD
+app.post("/sendToHod", async (req, res) => {
+  console.log("/sendToHod");
+  const { applicantId, token } = req.body;
+  const response = await sendToHod(applicantId, token);
   console.log(response);
   res.send(response);
 });

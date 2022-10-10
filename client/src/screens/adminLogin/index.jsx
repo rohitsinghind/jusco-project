@@ -51,15 +51,12 @@ export default function AdminLogin() {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/login",
-        creds
-      )
-      .then((res) => localStorage.setItem("adminToken",res.data?.token))
-       navigate(link);
+    axios.post("http://localhost:3001/login", creds).then((res) => {
+      localStorage.setItem("adminToken", res.data?.token);
+      console.log(res.data);
+      navigate(link);
+    });
   };
-
-  
 
   const mediaQuery = window.matchMedia("(max-width: 550px)");
 

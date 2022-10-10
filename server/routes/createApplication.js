@@ -7,48 +7,48 @@ async function createApplication(usrData) {
   console.log(usrData);
   const {
     salutation,
-        Fname,
-        Lname,
-        mobile,
-        email,
-        designation,
-        doctype1,
-        doc1No,
-        docFile1,
-        doctype2,
-        doc2No,
-        docFile2,
-        doctype3,
-        doc3No,
-        docFile3,
-        nameBa,
-        streetHouseNoBa,
-        zoneBa,
-        areaBa,
-        localityBa,
-        postalCodeBa,
-        cityBa,
-        regionBa,
-        countryBa,
-        namePa,
-        streetHouseNoPa,
-        postalCodePa,
-        cityPa,
-        regionPa,
-        countryPa,
-        zonePa,
-        areaPa,
-        localityPa,
-        qty,
-        remarks,
+    Fname,
+    Lname,
+    mobile,
+    email,
+    designation,
+    doctype1,
+    doc1No,
+    docFile1,
+    doctype2,
+    doc2No,
+    docFile2,
+    doctype3,
+    doc3No,
+    docFile3,
+    nameBa,
+    streetHouseNoBa,
+    zoneBa,
+    areaBa,
+    localityBa,
+    postalCodeBa,
+    cityBa,
+    regionBa,
+    countryBa,
+    namePa,
+    streetHouseNoPa,
+    postalCodePa,
+    cityPa,
+    regionPa,
+    countryPa,
+    zonePa,
+    areaPa,
+    localityPa,
+    qty,
+    remarks,
   } = usrData;
-  try{
+  try {
     const as = await db.customer.create({
       data: {
         id: `${Fname}/${dateTime}/${email}` || "undefined",
         application_no: `200/${Fname[(0, 3)]}/${mobile[(0, 3)]}` || "undefined",
         customer_id: `${Fname}/${dateTime}/${email}` || "undefined",
-        status: "undefined",
+        status: "depo",
         salutation: salutation || "undefined",
         first_name: Fname || "undefined",
         last_name: Lname || "undefined",
@@ -92,14 +92,13 @@ async function createApplication(usrData) {
       status: "success",
       message: `Application Created For User ${Fname}`,
       id: `${Fname}/${dateTime}/${email}`,
-    };}
-    catch(e){
-      return {
-        status: "Failed",
-        message: `No Application Created`,
-      }
-    }
-  
+    };
+  } catch (e) {
+    return {
+      status: "Failed",
+      message: `No Application Created`,
+    };
+  }
 }
 
 module.exports = { createApplication };

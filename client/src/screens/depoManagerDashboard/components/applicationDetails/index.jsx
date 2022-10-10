@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { styles } from "./styles";
 import Iframe from "react-iframe";
-
+import axios from "axios";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -19,9 +19,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Checkbox, FormLabel } from "@mui/material";
 import UsrSign from "../signaturePad";
-export default function ApplicationDetails({applicantData}) {
-
-  console.log(applicantData)
+export default function ApplicationDetails({ applicantData }) {
+  console.log(applicantData);
 
   const mediaQuery = window.matchMedia("(max-width: 650px)");
 
@@ -41,6 +40,12 @@ export default function ApplicationDetails({applicantData}) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:3000/sendToHod", {
+        applicantId: applicantData.id,
+        token: localStorage.getItem("adminToken"),
+      })
+      .then((res) => alert(res.data));
   };
 
   const divForScroll = useRef(null);
@@ -64,31 +69,43 @@ export default function ApplicationDetails({applicantData}) {
               <Typography sx={styles.dashboardText}>Personal Info</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.salutation+". "+applicantData.first_name+" "+applicantData.last_name}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.salutation +
+                    ". " +
+                    applicantData.first_name +
+                    " " +
+                    applicantData.last_name}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Mobile Number</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.mobile_no}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.mobile_no}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Email</Typography>
                 <Typography sx={styles.fieldData}>
-                {applicantData.email_id}
+                  {applicantData.email_id}
                 </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Designation</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.designation}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.designation}
+                </Typography>
               </Box>
             </div>
             <div>
               <Typography sx={styles.dashboardText}>GSTIN Details</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>GSTIN</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.document_no_1}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.document_no_1}
+                </Typography>
               </Box>
             </div>
           </Box>
@@ -100,31 +117,43 @@ export default function ApplicationDetails({applicantData}) {
               <Typography sx={styles.dashboardText}>Billing Address</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_estb_name}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_estb_name}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_street}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_street}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_city}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_city}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_region}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_region}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_country}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_country}
+                </Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.billing_postal_code}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.billing_postal_code}
+                </Typography>
               </Box>
             </div>
 
@@ -132,31 +161,43 @@ export default function ApplicationDetails({applicantData}) {
               <Typography sx={styles.dashboardText}>Pickup Address</Typography>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Name</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_estb_name}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_estb_name}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Street/ House No.</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_street}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_street}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>City</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_city}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_city}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Region</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_region}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_region}
+                </Typography>
               </Box>
 
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Country</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_country}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_country}
+                </Typography>
               </Box>
               <Box sx={styles.detailsRow}>
                 <Typography sx={styles.field}>Postal Code</Typography>
-                <Typography sx={styles.fieldData}>{applicantData.pickup_postal_code}</Typography>
+                <Typography sx={styles.fieldData}>
+                  {applicantData.pickup_postal_code}
+                </Typography>
               </Box>
             </div>
           </Box>

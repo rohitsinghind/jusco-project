@@ -37,10 +37,28 @@ const s = {
 };
 
 const b = {
-  username: "ani",
-  password: "ani",
-  role: "hod",
-  application_no: "1231",
-  id: "myId",
-  mod_by: "ani",
+  "username": "ani",
+  "password": "ani",
+  "role": "hod",
+  "application_no": "1231",
+  "id": "myId",
+  "mod_by": "ani",
 };
+
+
+//One user info  depomanager
+{"username": "root",
+"password": "root",
+"role": "depot_manager",
+"application_no": "1231",
+"id": "myId",
+"mod_by": "ani"}
+
+//One user info  hod
+{
+  "username": "hod",
+"password": "mypass@123",
+"role": "hod",
+"application_no": "1231",
+"id": "myId",
+"mod_by": "ani"}

@@ -1,35 +1,29 @@
 const { PrismaClient } = require("@prisma/client");
 const db = new PrismaClient();
 
-async function getAllApplication({ token }) {
+async function sendToHod(applicantId, token) {
+  console.log(applicantId);
   const usr = await db.user.findUnique({
     where: {
       token: token,
     },
   });
-  console.log(usr);
 
   if (!usr) {
     return { flag: false, message: "Bad Request" };
   } else if (usr.role == "depot_manager") {
-    const applicants = await db.customer.findMany();
-    console.log(applicants);
-    return {
-      flag: true,
-      message: "Success",
-      data: applicants,
-    };
-  } else if (usr.role == "hod") {
-    const applicants = await db.customer.findMany({
+    const application = await db.customer.update({
       where: {
+        id: applicantId,
+      },
+      data: {
         status: "HOD",
       },
     });
-    console.log(applicants);
+
     return {
       flag: true,
-      message: "Success",
-      data: applicants,
+      message: `Success, Sent to hod`,
     };
   } else {
     return {
@@ -39,4 +33,4 @@ async function getAllApplication({ token }) {
   }
 }
 
-module.exports = { getAllApplication };
+module.exports = { sendToHod };
