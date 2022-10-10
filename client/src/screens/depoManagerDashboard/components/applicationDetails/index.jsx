@@ -20,12 +20,18 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Checkbox, FormLabel } from "@mui/material";
 import UsrSign from "../signaturePad";
 export default function ApplicationDetails({ applicantData }) {
-  console.log(applicantData);
 
   const mediaQuery = window.matchMedia("(max-width: 650px)");
 
+  const [freq, setFreq] = useState("");
+  const [category, setCategory] = useState("")
+  const [mobileAck, setMobileAck] = useState(false)
+  const [area, setArea] = useState("")
+  const [rate, setRate] = useState("")
+
+
   const [creds, setCreds] = useState({
-    Longitude: "",
+    Longitude: "1",
     Latitude: "",
     area: "",
     rate: "",
@@ -34,18 +40,17 @@ export default function ApplicationDetails({ applicantData }) {
   const handleChange = (key) => {
     key.preventDefault();
     setCreds({ ...creds, [key.target.id]: key.target.value });
-    console.log(creds);
-    console.log(key.target.id);
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/sendToHod", {
+      .post("http://localhost:3001/sendToHod", {
         applicantId: applicantData.id,
         token: localStorage.getItem("adminToken"),
+        freq,category,mobileAck,area,rate
       })
-      .then((res) => alert(res.data));
+      .then((res) => console.log(res.data));
   };
 
   const divForScroll = useRef(null);
@@ -282,6 +287,10 @@ export default function ApplicationDetails({ applicantData }) {
                 aria-labelledby="Frequency of Collection per day"
                 defaultValue="Once"
                 name="frequency"
+                value={freq}
+                onChange={(e) => {
+                  setFreq(e.target.value);
+                }}
               >
                 <FormControlLabel
                   value="Once"
@@ -319,7 +328,10 @@ export default function ApplicationDetails({ applicantData }) {
                 />
                 <FormControlLabel
                   value="Signature on Mobile"
-                  control={<Checkbox />}
+                  control={<Checkbox 
+                    checked = {mobileAck}
+                    onClick = {()=>{setMobileAck(!mobileAck)}}
+                  />}
                   label="Signature on Mobile"
                 />
               </RadioGroup>
@@ -337,6 +349,10 @@ export default function ApplicationDetails({ applicantData }) {
                 aria-labelledby="Frequency of Collection per day"
                 defaultValue="Once"
                 name="frequency"
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
               >
                 <FormControlLabel value="B2B" control={<Radio />} label="B2B" />
                 <FormControlLabel value="B2C" control={<Radio />} label="B2C" />
@@ -366,9 +382,11 @@ export default function ApplicationDetails({ applicantData }) {
                 <Select
                   labelId="area"
                   id="area"
-                  value={creds.area || ""}
-                  label="area"
-                  onChange={handleChange}
+                  value={area}
+                  label="Area"
+                  onChange={(e) => {
+                    setArea(e.target.value);
+                  }}
                 >
                   <MenuItem value={"RD"}>Ramdasbhatta</MenuItem>
                   <MenuItem value={"KSD"}>Kashidih</MenuItem>
@@ -382,9 +400,11 @@ export default function ApplicationDetails({ applicantData }) {
                 <Select
                   labelId="rate"
                   id="rate"
-                  value={creds.rate || ""}
+                  value={rate}
                   label="Rate/ Pickup"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    setRate(e.target.value);
+                  }}
                 >
                   <MenuItem value={"10"}>10.00</MenuItem>
                   <MenuItem value={"15"}>15.00</MenuItem>

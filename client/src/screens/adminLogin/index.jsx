@@ -24,21 +24,21 @@ export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [checked, setChecked] = useState(false);
-  const [link, setLink] = useState("/depoManagerDashboard");
+  // const [link, setLink] = useState("/depoManagerDashboard");
 
   let navigate = useNavigate();
 
-  function handleRadio() {
-    if (checked) {
-      setLink("/depoManagerDashboard");
-      setChecked(false);
-      console.log(checked);
-    } else {
-      console.log(checked);
-      setChecked(true);
-      setLink("/hodDashboard");
-    }
-  }
+  // function handleRadio() {
+  //   if (checked) {
+  //     setLink("/depoManagerDashboard");
+  //     setChecked(false);
+  //     console.log(checked);
+  //   } else {
+  //     console.log(checked);
+  //     setChecked(true);
+  //     setLink("/hodDashboard");
+  //   }
+  // }
 
   const handleChange = (key) => {
     key.preventDefault();
@@ -51,10 +51,11 @@ export default function AdminLogin() {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3001/login", creds).then((res) => {
+    const login = await axios.post("http://localhost:3001/login", creds).then((res) => {
       localStorage.setItem("adminToken", res.data?.token);
       console.log(res.data);
-      navigate(link);
+
+      {res.data?.flag ? navigate(res.data?.data?.role == "hod"?"/hodDashboard":res.data?.data?.role == "depot_manager"?"/depoManagerDashboard":"/accounts") : alert(res.data?.message)}
     });
   };
 
@@ -105,7 +106,7 @@ export default function AdminLogin() {
               label="Password"
             />
           </FormControl>
-          <Box
+          {/* <Box
             sx={{
               width: "100%",
               display: "flex",
@@ -121,7 +122,7 @@ export default function AdminLogin() {
               componentsProps={{ input: { "aria-label": "A" } }}
             />
             <Typography>Login as H.O.D</Typography>
-          </Box>
+          </Box> */}
           <Button
             variant="contained"
             sx={styles.loginBtn}

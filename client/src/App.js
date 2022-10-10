@@ -38,7 +38,7 @@ function App() {
               path="/applicationStatus"
               element={<CustomerApplicationStatus />}
             />
-            <Route path="/hodDashboard" element={<HodDashboard />} />
+            <Route path="/hodDashboard" element={<HodDashboard setApplicantData={setApplicantData}/>} />
             <Route
               path="/hodDasAppDetails"
               element={<CustomerApplicationStatus rev={true} />}
