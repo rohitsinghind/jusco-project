@@ -1,5 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
-const db = new PrismaClient();
+const pool = require("../database");
+const mysql = require("mysql");
 
 async function applicationStatus({ id }) {
   console.log(id);

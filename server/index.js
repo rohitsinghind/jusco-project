@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.post("/createApplication", async (req, res) => {
   const response = await createApplication(req.body);
   console.log("/createApplication");
+  console.log(response);
   res.send(response);
 });
 
@@ -80,7 +81,7 @@ app.post("/changeStatus", async (req, res) => {
 //Sending Application to HOD
 app.post("/sendToHod", async (req, res) => {
   console.log("/sendToHod");
- 
+
   const response = await sendToHod(req.body);
   console.log(response);
   res.send(response);

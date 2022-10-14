@@ -1,6 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
-
-const db = new PrismaClient();
+const { pool } = require("../database");
+const mysql = require("mysql");
 
 async function createApplication(usrData) {
   const dateTime = new Date();
@@ -42,68 +41,113 @@ async function createApplication(usrData) {
     qty,
     remarks,
   } = usrData;
-  try {
-    const as = await db.customer.create({
-      data: {
-        id: `${Fname}/${dateTime}/${email}` || "undefined",
-        application_no: `200/${Fname[(0, 3)]}/${mobile[(0, 3)]}` || "undefined",
-        customer_id: `${Fname}/${dateTime}/${email}` || "undefined",
-        status: "depo",
-        salutation: salutation || "undefined",
-        first_name: Fname || "undefined",
-        last_name: Lname || "undefined",
-        mobile_no: mobile || "undefined",
-        email_id: email || "undefined",
-        designation: designation || "undefined",
-        document_type_1: doctype1 || "undefined",
-        document_no_1: doc1No || "undefined",
-        document_file_name_1: docFile1 || "undefined",
-        document_type_2: doctype2 || "undefined",
-        document_no_2: doc2No || "undefined",
-        document_file_name_2: docFile2 || "undefined",
-        document_type_3: doctype3 || "undefined",
-        document_no_3: doc3No || "undefined",
-        document_file_name_3: docFile3 || "undefined",
-        billing_estb_name: nameBa || "undefined",
-        billing_street: streetHouseNoBa || "undefined",
-        billing_zone: zoneBa || "undefined",
-        billing_area: areaBa || "undefined",
-        billing_locality: localityBa || "undefined",
-        billing_postal_code: postalCodeBa || "undefined",
-        billing_city: cityBa || "undefined",
-        billing_region: regionBa || "undefined",
-        billing_country: countryBa || "undefined",
-        pickup_estb_name: namePa || "undefined",
-        pickup_street: streetHouseNoPa || "undefined",
-        pickup_zone: zonePa || "undefined",
-        pickup_area: areaPa || "undefined",
-        pickup_locality: localityPa || "undefined",
-        pickup_postal_code: postalCodePa || "undefined",
-        pickup_city: cityPa || "undefined",
-        pickup_region: regionPa || "undefined",
-        pickup_country: countryPa || "undefined",
-        daily_wastage: qty || "undefined",
-        remarks: remarks || "undefined",
-        auth: "undefined",
-        application_status: "started",
-        freq :"Undefined",
-        category :"undefined",
-        mobileAck :"Undefiend",
-        area: "Undefined",
-        rate: "undefined"
-      },
-    });
-    return {
-      status: "success",
-      message: `Application Created For User ${Fname}`,
-      id: `${Fname}/${dateTime}/${email}`,
-    };
-  } catch (e) {
-    return {
-      status: "Failed",
-      message: `No Application Created`,
-    };
-  }
+
+  let allData = [
+    "customer",
+    "id",
+    "application_no",
+    "customer_id",
+    "status",
+    "salutation",
+    "first_name",
+    "last_name",
+    "mobile_no",
+    "email_id",
+    "designation",
+    "document_type_1",
+    "document_no_1",
+    "document_file_name_1",
+    "document_type_2",
+    "document_no_2",
+    "document_file_name_2",
+    "document_type_3",
+    "document_no_3",
+    "document_file_name_3",
+    "billing_estb_name",
+    "billing_street",
+    "billing_zone",
+    "billing_area",
+    "billing_locality",
+    "billing_postal_code",
+    "billing_city",
+    "billing_region",
+    "billing_country",
+    "pickup_estb_name",
+    "pickup_street",
+    "pickup_zone",
+    "pickup_area",
+    "pickup_locality",
+    "pickup_postal_code",
+    "pickup_city",
+    "pickup_region",
+    "pickup_country",
+    "daily_wastage",
+    "remarks",
+    "longitude",
+    "latitude",
+
+    Math.floor(Math.random() * 1000),
+    `${Math.floor(Math.random() * 1000)}-${Fname}`,
+    `${Fname}/${Math.floor(Math.random() * 1000)}/${dateTime.getFullYear()}`,
+    0,
+    salutation,
+    Fname,
+    Lname,
+    mobile,
+    email,
+    designation,
+    1213223,
+    1,
+    docFile1,
+    232332,
+    1,
+    docFile2,
+    1,
+    322333,
+    docFile3,
+    nameBa,
+    streetHouseNoBa,
+    2,
+    4,
+    2,
+    830103,
+    1,
+    regionBa,
+    countryBa,
+    namePa,
+    streetHouseNoPa,
+    1,
+    2,
+    1,
+    postalCodePa,
+    cityPa,
+    regionPa,
+    countryPa,
+    40,
+    remarks,
+    "123.23.232",
+    "213.23.2312",
+  ];
+  console.log("hua kuch");
+  const insertQuery =
+    "INSERT INTO ?? (??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??,??) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  let query = mysql.format(insertQuery, allData);
+  pool.query(query, (err, response) => {
+    console.log(err);
+    if (err) {
+      return {
+        status: "Failed",
+        message: `No Application Created`,
+      };
+    } else {
+      console.log(response);
+      return {
+        status: "success",
+        message: `Application Created For User ${Fname}`,
+        id: `${Fname}/${dateTime}/${email}`,
+      };
+    }
+  });
 }
 
 module.exports = { createApplication };
